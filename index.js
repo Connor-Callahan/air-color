@@ -4,7 +4,7 @@ const shoeContainer = document.querySelector('#container')
 
 
 shoeContainer.addEventListener('click', (e) => {
-  console.log(e.target.className)
+  console.log(e.target)
 })
 
 })
