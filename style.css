@@ -1,0 +1,68 @@
+#cls-3 {
+  background-color: blue;
+}
+
+#outline {
+  position: absolute;
+  max-width: 78.3vh;
+  max-height: 78.3vh;
+  pointer-events: none;
+}
+
+#airs {
+  position: absolute;
+  top: 50px;
+  left: 33px;
+  max-height: 71vh;
+  max-width: 71vh;
+}
+
+#container {
+  position: relative;
+  width: 75vh;
+  height: 55vh;
+  left: 0vh;
+  margin: 5% auto;
+  padding: 10px;
+  border: 5px solid #ccc;
+  background-color: #fff;
+}
+
+
+#laces {
+  position: absolute;
+  top: 11.8vh;
+  left: 23.95vh;
+  max-width: 22.9vh;
+  color: blue;
+}
+
+#swoosh {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#eyelet {
+  position: absolute;
+  top: 14.7vh;
+  left: 45vh;
+  max-width: 4vh;
+}
+
+#sole_patch {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#logo_patch {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+#toe_patch {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
