@@ -5,12 +5,24 @@
   pointer-events: none;
 }
 
-#airs {
+/* #airs {
   position: absolute;
   top: 50px;
   left: 33px;
   max-height: 71vh;
   max-width: 71vh;
+} */
+
+#main-shoe {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#Layer_2 {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #container {
