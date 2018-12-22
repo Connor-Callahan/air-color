@@ -13,6 +13,10 @@
   max-width: 71vh;
 } */
 
+.dark-picker .huebee__container {
+  background: #222;
+}
+
 #main-shoe {
   position: absolute;
   top: 0;
