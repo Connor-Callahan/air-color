@@ -11,6 +11,7 @@ shoeContainer.addEventListener('click', (e) => {
   }
   innerShoePatch = shoePatch.dataset.id.slice(6, shoePatch.dataset.id.length)
 
+  console.log(innerShoePatch)
   const patchChange = document.getElementById(innerShoePatch)
 
   patchChange.style.fill = 'lime'
