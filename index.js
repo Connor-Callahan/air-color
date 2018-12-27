@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const shoeContainer = document.querySelector('#container')
 const colorID = document.querySelector('#color-ID')
+const pickerButton = document.querySelector('#picker-button')
+let pickerButtonBackground
 let shoePatch
-let patchChange
+let patchChange = document.querySelector('#swoosh')
 let colorChange
 
 //grabbing the outer transparent patch ---
@@ -13,16 +15,22 @@ shoeContainer.addEventListener('click', (e) => {
   }
   innerShoePatch = shoePatch.dataset.id.slice(6, shoePatch.dataset.id.length)
 
-  console.log(innerShoePatch)
   patchChange = document.getElementById(innerShoePatch)
 
 })
 
-colorID.addEventListener('click', (e) => {
+colorID.addEventListener('input', (e) => {
   console.log(e.target)
   colorChange = e.target.style.backgroundColor
-
   patchChange.style.fill = `${colorChange}`
+
+  console.log(pickerButton.style.backgroundColor)
+  pickerButton.style.backgroundColor = `${colorChange}`
+})
+
+pickerButton.addEventListener('click', (e) => {
+  // pickerButtonBackground = e.target.style.backgroundColor
+  // console.log(pickerButtonBackground)
 })
 
 })

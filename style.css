@@ -48,6 +48,19 @@
   background: #222;
 }
 
+#picker-button {
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  bottom: -191px;
+  width: 75px;
+  height: 75px;
+  border: 3px solid #f5f5f5;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 0 3px darkslategrey;
+  font-size:30px;
+}
 
 #main-shoe {
   position: absolute;
