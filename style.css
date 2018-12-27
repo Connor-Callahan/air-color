@@ -1,18 +1,4 @@
-/* #outline {
-  position: absolute;
-  max-width: 78.3vh;
-  max-height: 78.3vh;
-  pointer-events: none;
-} */
-
-/* #airs {
-  position: absolute;
-  top: 50px;
-  left: 33px;
-  max-height: 71vh;
-  max-width: 71vh;
-} */
-
+/* html2canvas to save svg to jpg images*/
 button {
   font-family: Nevis;
   font-weight: 900;
@@ -25,41 +11,44 @@ button {
 
 #screen {
   position: relative;
-  width: 40vh;
-  height: 40vh;
-  margin: 7% auto;
+  width: 150px;
+  height: 150px;
 }
 
 #screenshot {
   position: absolute;
   right: 20px;
-  bottom: 100px;
+  bottom: 20vh;
+  padding: 50px;
   width: 200px;
   height: 200px;
 }
 
-#test-subject {
-
-}
 
 /* #test-result {
-  max-width: 200px;
-  position: relative
+  min-width: 200%;
+  min-height: 100%;
+  margin-left: 1em;
   display: inline-block;
   vertical-align: top;
 } */
 
-h2 {
-  text-align: center;
-}
+/* #test-subject{
+  min-width: 100%;
+  min-height:  100%;
+} */
+/* #test-result {
+  display: inline-block;
+  vertical-align: top;
+} */
 
-h1, h2 {
-  font-weight: 900;
-}
+/*  huebee color picker */
 
 .dark-picker .huebee__container {
   background: #222;
 }
+
+
 
 #main-shoe {
   position: absolute;
@@ -89,6 +78,8 @@ h1, h2 {
 
   margin: 7% auto;
 }
+
+/* saved in case for PNG support */
 
 
 /* #laces {

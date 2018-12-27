@@ -22,13 +22,8 @@ colorID.addEventListener('click', (e) => {
   )
 })
 
-
-// colorID.addEventListener('click', (e) => {
-//   console.log(e.target)
-// })
-
-
 })
+
 function generateScreenshot() {
     html2canvas(document.getElementById('screen'), {
             logging: true,
