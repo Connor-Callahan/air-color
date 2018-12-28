@@ -20,7 +20,6 @@ shoeContainer.addEventListener('click', (e) => {
 
 })
 
-
 colorID.addEventListener('click', (e) => {
   colorChange = colorID.style.backgroundColor
   console.log(colorChange)
@@ -40,14 +39,14 @@ selectColorButton.addEventListener('click', (e) => {
 
 // for using canvas ----------
 
-// function generateScreenshot() {
-//     html2canvas(document.getElementById('screen'), {
-//             logging: true,
-//             profile: true,
-//             useCORS: true}).then(function(canvas) {
-//         const data = canvas.toDataURL('image/jpeg', 0.9);
-//         const src = encodeURI(data);
-//         document.getElementById('screenshot').src = src;
-//         // document.getElementById('size').innerHTML = src.length + ' bytes';
-//     });
-// }
+function generateScreenshot() {
+    html2canvas(document.getElementById('screen'), {
+            logging: true,
+            profile: true,
+            useCORS: true}).then(function(canvas) {
+        const data = canvas.toDataURL('image/jpeg', 0.9);
+        const src = encodeURI(data);
+        document.getElementById('screenshot').src = src;
+        // document.getElementById('size').innerHTML = src.length + ' bytes';
+    });
+}
