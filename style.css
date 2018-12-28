@@ -31,8 +31,8 @@
 /*  huebee color picker */
 
 #color-picker-container {
-  left: 50px;
-  top: 30px;
+  left: 60px;
+  top: 60px;
 }
 .dark-picker .huebee__container {
   background: #222;
@@ -51,7 +51,7 @@
   box-shadow: 0 2 5px darkslategrey;
 }
 
-#load-color-button {
+/* #load-color-button {
   position: absolute;
   top: 10px;
   left: 250px;
@@ -63,9 +63,9 @@
   box-shadow: 0 0 3px darkslategrey;
   font-size: 15px;
   font-family: nevis;
-}
+} */
 
-#set-color-button {
+/* #set-color-button {
   position: absolute;
   top: 10px;
   left: 350px;
@@ -79,13 +79,13 @@
   color: black;
   font-family: nevis;
   z-index: 0;
-}
+} */
 
 #container {
   position: relative;
   width: 80vh;
   height: 80vh;
-  left: -75px;
+  left: -60px;
   margin: 7% auto;
 }
 

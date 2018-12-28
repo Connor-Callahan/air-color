@@ -2,16 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const shoeContainer = document.querySelector('#container')
 const colorID = document.querySelector('#color-ID')
-const setColorButton = document.querySelector('#set-color-button')
-const loadColorButton = document.querySelector('#load-color-button')
+
 let pickerButtonBackground
 let shoePatch
+let displayPatch
 let patchChange = document.querySelector('#swoosh')
 let colorChange
 
 const elem = document.querySelector('.color-input');
 const hueb = new Huebee( elem, {
   // options
+  shades: 7
 });
 
 hueb.on( 'change', function( color ) {
@@ -28,6 +29,7 @@ shoeContainer.addEventListener('click', (e) => {
   innerShoePatch = shoePatch.dataset.id.slice(6, shoePatch.dataset.id.length)
 
   patchChange = document.getElementById(innerShoePatch)
+  console.log(patchChange)
 
 })
 
@@ -65,6 +67,7 @@ function generateScreenshot() {
         // document.getElementById('size').innerHTML = src.length + ' bytes';
     });
 }
+
 
 // saveButton.addEventListener((e) => {
 //   html2canvas(document.querySelector('#container')[0], {
