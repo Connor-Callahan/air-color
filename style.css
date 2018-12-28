@@ -10,28 +10,27 @@ button {
 }
 
 #screen {
-  position: relative;
-  width: 150px;
-  height: 150px;
+  position: absolute;
+  width: 200px;
+  height: 200px;
 }
 
 #screenshot {
   position: absolute;
-  right: 20px;
-  bottom: 20vh;
-  padding: 50px;
+  border:5px solid black;
+  top: 150px;
+  right: 150px;
   width: 200px;
   height: 200px;
-} */
+}
 
-
-/* #test-result {
+ /* #test-result {
   min-width: 200%;
   min-height: 100%;
   margin-left: 1em;
   display: inline-block;
   vertical-align: top;
-}
+} */
 
 /* #test-subject{
   min-width: 100%;
@@ -48,6 +47,7 @@ button {
   background: #222;
 }
 
+
 #select-color-button {
   position: absolute;
   top: 10px;
@@ -58,7 +58,7 @@ button {
   border-radius: 50%;
   text-align: center;
   box-shadow: 0 0 3px darkslategrey;
-  font-size:10px;
+  font-size: 15px;
   font-family: nevis;
 }
 
@@ -82,7 +82,7 @@ button {
   z-index: 1;
 }
 
-#Layer_2 {
+#inner-shoe {
   position: absolute;
   top: 0;
   left: 0;

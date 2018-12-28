@@ -32,6 +32,7 @@ loadColorButton.addEventListener('click', (e) => {
 
 selectColorButton.addEventListener('click', (e) => {
   console.log(e.target)
+  colorChange = colorID.style.backgroundColor
   loadColorButton.style.backgroundColor = `${colorChange}`
 })
 
