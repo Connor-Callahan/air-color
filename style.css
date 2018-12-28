@@ -1,54 +1,57 @@
 /* html2canvas to save svg to jpg images*/
 #save-button {
-  font-family: Nevis;
-  font-weight: 900;
   position: absolute;
-  top: 50px;
-  left: 0px;
-  padding: 0.25em 0.5em;
-  font-size: 1em;
+  top: -90px;
+  left: 25px;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  font-size: 15px;
+  text-align: center;
+  font-family: nevis;
+  box-shadow: 0 2 5px darkslategrey;
 }
 
 #screen {
-  position: absolute;
-  width: 400px;
-  height: 400px;
+  position: relative;
+  width: 500px;
+  height: 500px;
 }
 
 #screenshot {
   position: absolute;
-  border:5px solid black;
-  top: 150px;
-  right: 150px;
-  width: 200px;
-  height: 200px;
+  border:1px solid grey;
+  right: 100px;
+  top: 15vh;
+  width: 40vh;
+  height: 40vh;
+  z-index: 4;
 }
-
- /* #test-result {
-  min-width: 200%;
-  min-height: 100%;
-  margin-left: 1em;
-  display: inline-block;
-  vertical-align: top;
-} */
-
-/* #test-subject{
-  min-width: 100%;
-  min-height:  100%;
-} */
-/* #test-result {
-  display: inline-block;
-  vertical-align: top;
-} */
 
 /*  huebee color picker */
 
+#color-picker-container {
+  left: 50px;
+  top: 30px;
+}
 .dark-picker .huebee__container {
   background: #222;
 }
 
+.color-input {
+  position: absolute;
+  top: 0px;
+  left: 25px;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  font-size: 15px;
+  text-align: center;
+  font-family: nevis;
+  box-shadow: 0 2 5px darkslategrey;
+}
 
-#select-color-button {
+#load-color-button {
   position: absolute;
   top: 10px;
   left: 250px;
@@ -62,7 +65,7 @@
   font-family: nevis;
 }
 
-#load-color-button {
+#set-color-button {
   position: absolute;
   top: 10px;
   left: 350px;
@@ -72,7 +75,18 @@
   border-radius: 50%;
   text-align: center;
   box-shadow: 0 0 3px darkslategrey;
-  font-size:30px;
+  font-size: 15px;
+  color: black;
+  font-family: nevis;
+  z-index: 0;
+}
+
+#container {
+  position: relative;
+  width: 80vh;
+  height: 80vh;
+  left: -75px;
+  margin: 7% auto;
 }
 
 #main-shoe {
@@ -96,13 +110,6 @@
   z-index: 3;
 }
 
-#container {
-  position: relative;
-  width: 80vh;
-  height: 60vh;
-
-  margin: 7% auto;
-}
 
 /* saved in case for PNG support */
 

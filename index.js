@@ -2,12 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const shoeContainer = document.querySelector('#container')
 const colorID = document.querySelector('#color-ID')
+const setColorButton = document.querySelector('#set-color-button')
 const loadColorButton = document.querySelector('#load-color-button')
-const selectColorButton = document.querySelector('#select-color-button')
 let pickerButtonBackground
 let shoePatch
 let patchChange = document.querySelector('#swoosh')
 let colorChange
+
+const elem = document.querySelector('.color-input');
+const hueb = new Huebee( elem, {
+  // options
+});
+
+hueb.on( 'change', function( color ) {
+  console.log('succes')
+  patchChange.style.fill = color;
+});
+
 
 //grabbing the outer transparent patch ---
 shoeContainer.addEventListener('click', (e) => {
@@ -20,21 +31,22 @@ shoeContainer.addEventListener('click', (e) => {
 
 })
 
-colorID.addEventListener('click', (e) => {
-  colorChange = colorID.style.backgroundColor
-  console.log(colorChange)
-})
+// altenative to hueb event change listener----
 
-loadColorButton.addEventListener('click', (e) => {
-  console.log(colorChange)
-  patchChange.style.fill = `${colorChange}`
-})
+// colorID.addEventListener('click', (e) => {
+//   colorChange = colorID.style.backgroundColor
+// })
 
-selectColorButton.addEventListener('click', (e) => {
-  console.log(e.target)
-  colorChange = colorID.style.backgroundColor
-  loadColorButton.style.backgroundColor = `${colorChange}`
-})
+// setColorButton.addEventListener('click', (e) => {
+//   console.log(colorChange)
+//   patchChange.style.fill = `${colorChange}`
+// })
+//
+// loadColorButton.addEventListener('click', (e) => {
+//   setColorButton.style.color = 'white'
+//   colorChange = colorID.style.backgroundColor
+//   setColorButton.style.backgroundColor = `${colorChange}`
+// })
 
 
 })
