@@ -1,5 +1,5 @@
 /* html2canvas to save svg to jpg images*/
-button {
+#save-button {
   font-family: Nevis;
   font-weight: 900;
   position: absolute;
@@ -11,8 +11,8 @@ button {
 
 #screen {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
 }
 
 #screenshot {

@@ -36,18 +36,32 @@ selectColorButton.addEventListener('click', (e) => {
   loadColorButton.style.backgroundColor = `${colorChange}`
 })
 
+
 })
 
 // for using canvas ----------
-
+//
 function generateScreenshot() {
     html2canvas(document.getElementById('screen'), {
+            scale: window.devicePixelRatio,
             logging: true,
             profile: true,
-            useCORS: true}).then(function(canvas) {
+            useCORS: false}).then(function(canvas) {
         const data = canvas.toDataURL('image/jpeg', 0.9);
         const src = encodeURI(data);
         document.getElementById('screenshot').src = src;
         // document.getElementById('size').innerHTML = src.length + ' bytes';
     });
 }
+
+// saveButton.addEventListener((e) => {
+//   html2canvas(document.querySelector('#container')[0], {
+//     width: 1200,
+//     height: 1200
+//   }).then(function(canvas) {
+//     var a = document.createElement('a');
+//     a.href = canvas.toDataURL("image/png");
+//     a.download = 'myfile.png';
+//     a.click();
+//   });
+// })
