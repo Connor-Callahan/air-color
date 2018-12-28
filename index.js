@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const shoeContainer = document.querySelector('#container')
 const colorID = document.querySelector('#color-ID')
-const pickerButton = document.querySelector('#picker-button')
+const loadColorButton = document.querySelector('#load-color-button')
+const selectColorButton = document.querySelector('#select-color-button')
 let pickerButtonBackground
 let shoePatch
 let patchChange = document.querySelector('#swoosh')
@@ -19,18 +20,20 @@ shoeContainer.addEventListener('click', (e) => {
 
 })
 
-colorID.addEventListener('input', (e) => {
-  console.log(e.target)
-  colorChange = e.target.style.backgroundColor
-  patchChange.style.fill = `${colorChange}`
 
-  console.log(pickerButton.style.backgroundColor)
-  pickerButton.style.backgroundColor = `${colorChange}`
+colorID.addEventListener('click', (e) => {
+  colorChange = colorID.style.backgroundColor
+  console.log(colorChange)
 })
 
-pickerButton.addEventListener('click', (e) => {
-  // pickerButtonBackground = e.target.style.backgroundColor
-  // console.log(pickerButtonBackground)
+loadColorButton.addEventListener('click', (e) => {
+  console.log(colorChange)
+  patchChange.style.fill = `${colorChange}`
+})
+
+selectColorButton.addEventListener('click', (e) => {
+  console.log(e.target)
+  loadColorButton.style.backgroundColor = `${colorChange}`
 })
 
 })
