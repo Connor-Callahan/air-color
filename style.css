@@ -89,15 +89,22 @@
 /* comment container */
 
 #comment-container {
-  position: absolute;
+  position: relative;
+  margin: auto;
+  width: 85%;
+  border: 3px solid lightgrey;
+  padding: 40px;
+  bottom: 200px;
+  /* position: absolute;
   width: 120vh;
   bottom: -350px;
   border: 1px solid lightgrey;
-  margin: 10%;
+  margin: 10%; */
 }
 
 .comment {
   position: relative;
+  display: inline-grid;
   border: 1.5px solid lightgrey;
   width: 175px;
   height: 175px;
@@ -105,8 +112,5 @@
   padding-right: 5%;
   padding-left: 5%;
   margin: 15px;
-}
-
-.comment .h1 {
-  font-family: nevis;
+  font-family: 'Muli', sans-serif;
 }
