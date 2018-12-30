@@ -33,7 +33,7 @@ function fetchShoes() {
       customShoeContainer.innerHTML += `
       <div class="custom-shoe-card">
       <h1>${shoe.name}</h1>
-      <p>${shoe.title}</p>
+      <p>"${shoe.title}"</p>
       <img class="custom-shoe" src="${shoe.img_url}">
       </div>
       `

@@ -1,19 +1,30 @@
 /* html2canvas to save svg to jpg images*/
+#create-shoe-container {
+  position: absolute;
+  width: 425px;
+  height: 475px;
+  right: 3.5vh;
+  top: 2vh;
+  border:2px solid grey;
+}
+
+#screenshot {
+  position: relative;
+  border:1.5px solid lightgrey;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 10%;
+  z-index: 4;
+}
 
 #screen {
   position: relative;
   width: 500px;
   height: 500px;
-}
-
-#screenshot {
-  position: absolute;
-  border:2px solid lightgrey;
-  right: 100px;
-  top: 15vh;
-  width: 42vh;
-  height: 42vh;
-  z-index: 4;
 }
 
 /*  huebee color picker */
@@ -99,14 +110,15 @@
 .custom-shoe-card {
   position: relative;
   display: inline-grid;
-  /* border: 1.5px solid lightgrey; */
-  width: 175px;
-  height: 175px;
+  width: auto;
+  height: auto;
+  border: 3px solid lightgrey;
   text-align: center;
   padding-right: 5%;
   padding-left: 5%;
   margin: 15px;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 .custom-shoe {

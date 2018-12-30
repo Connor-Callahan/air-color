@@ -5,9 +5,11 @@
     <title>Air Color</title>
     <link rel="stylesheet" href="style.css">
     <!-- google font links -->
-    <!-- <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'> -->
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700" rel="stylesheet">
+
 
     <script src="index.js"></script>
     <!-- huebee color picker -->
@@ -300,9 +302,20 @@
       </div>
     </div>
 
-    <div>
+    <div id="create-shoe-container">
+
       <img src=" " id="screenshot" >
+
+      <form class="create-shoe-form" style="">
+        <input id="shoe-name" type="text" name="name" value="" placeholder="Enter your name..." class="input-text">
+        <br>
+        <input id="shoe-title" type="text" name="title" value="" placeholder="Enter a shoe title..." class="input-text">
+        <br>
+        <input type="submit" name="submit" value="Create" class="submit">
+      </form>
+
     </div>
+
     <div id="custom-shoe-container">
 
       <div id="comment-container"></div>
