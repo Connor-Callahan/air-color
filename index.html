@@ -13,9 +13,11 @@
   </head>
 
   <body>
+
     <div id="color-picker-container">
-      <button class="color-input">Select color</button>
-      <!-- <input id='color-ID' data-huebee='{ "className": "dark-picker" }' /> -->
+
+      <button id="color-input" data-huebee='{ "className": "dark-picker" }'>Select color</button>
+
       <button id="save-button" onclick="javascript:generateScreenshot()">Save+</button>
     </div>
 <!--
@@ -29,7 +31,6 @@
         <div id="screen">
 
             <svg id="main-shoe" width="500px" height="500px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 906.09 447.99"><defs>
-
 
               <style>
                 #main-shoe .tab-liner {
@@ -152,9 +153,8 @@
 
             <svg id="outer-shoe" width="500px" height="500px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 906.09 447.99"><defs>
 
-
               <style>
-                #outer-shoe .tab-liner {
+               #outer-shoe .tab-liner {
                   fill: transparent;
                 },
                 #outer-shoe .logo-patch {
@@ -292,7 +292,15 @@
 
       </div>
     </div>
-      <div><img src=" " id="screenshot"></div>
+
+    <div>
+      <img src=" " id="screenshot" >
+    </div>
+
+    <div id="comment-container">
+
+    </div>
 
   </body>
+
 </html>

@@ -1,35 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+
+// API selectors
+const commentContainer = document.querySelector('#comment-container')
+
+// API requests
+
+function fetchComments() {
+  fetch('http://localhost:3000/api/v1/comments')
+  .then(r => r.json())
+  .then((data) => {
+    data.forEach((comment) => {
+      commentContainer.innerHTML += `
+      <div class="comment">
+      <h1>${comment.name}</h1>
+      <p>${comment.content}</p>
+      </div>
+      `
+    })
+  })
+}
+
+fetchComments()
+
+// app selector
 const shoeContainer = document.querySelector('#container')
-const colorID = document.querySelector('#color-ID')
 
 let pickerButtonBackground
-let shoePatch
-let displayPatch
-let patchChange = document.querySelector('#swoosh')
+let targetPatch
+let targetPatchChange = document.querySelector('#swoosh')
 let colorChange
 
-const elem = document.querySelector('.color-input');
+// for hueb color-picker --min.js
+const elem = document.querySelector('#color-input');
 const hueb = new Huebee( elem, {
   // options
   shades: 7
 });
 
 hueb.on( 'change', function( color ) {
-  console.log('succes')
-  patchChange.style.fill = color;
+  targetPatchChange.style.fill = color;
 });
 
 
 //grabbing the outer transparent patch ---
 shoeContainer.addEventListener('click', (e) => {
   if(e.target.tagName == 'path') {
-    shoePatch = e.target
+    targetPatch = e.target
   }
-  innerShoePatch = shoePatch.dataset.id.slice(6, shoePatch.dataset.id.length)
-
-  patchChange = document.getElementById(innerShoePatch)
-  console.log(patchChange)
+  innerShoePatch = targetPatch.dataset.id.slice(6, targetPatch.dataset.id.length)
+  targetPatchChange = document.getElementById(innerShoePatch)
 
 })
 
@@ -41,7 +61,7 @@ shoeContainer.addEventListener('click', (e) => {
 
 // setColorButton.addEventListener('click', (e) => {
 //   console.log(colorChange)
-//   patchChange.style.fill = `${colorChange}`
+//   targetPatchChange.style.fill = `${colorChange}`
 // })
 //
 // loadColorButton.addEventListener('click', (e) => {
@@ -64,6 +84,7 @@ function generateScreenshot() {
         const data = canvas.toDataURL('image/jpeg', 0.9);
         const src = encodeURI(data);
         document.getElementById('screenshot').src = src;
+        const screenShot = document.querySelector('#screenshot').src
         // document.getElementById('size').innerHTML = src.length + ' bytes';
     });
 }
