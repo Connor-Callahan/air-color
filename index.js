@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // API selectors
 const commentContainer = document.querySelector('#comment-container')
+const customShoeContainer = document.querySelector('#custom-shoe-container')
 
 // API requests
 
@@ -23,6 +24,24 @@ function fetchComments() {
 
 fetchComments()
 
+function fetchShoes() {
+  fetch('http://localhost:3000/api/v1/shoes/')
+  .then(r => r.json())
+  .then((data) => {
+    console.log(data)
+    data.forEach((shoe) => {
+      customShoeContainer.innerHTML += `
+      <div class="custom-shoe-card">
+      <h1>${shoe.name}</h1>
+      <p>${shoe.title}</p>
+      <img class="custom-shoe" src="${shoe.img_url}">
+      </div>
+      `
+    })
+  })
+}
+
+fetchShoes()
 // app selector
 const shoeContainer = document.querySelector('#container')
 
@@ -41,7 +60,6 @@ const hueb = new Huebee( elem, {
 hueb.on( 'change', function( color ) {
   targetPatchChange.style.fill = color;
 });
-
 
 //grabbing the outer transparent patch ---
 shoeContainer.addEventListener('click', (e) => {
