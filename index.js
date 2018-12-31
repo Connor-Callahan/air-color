@@ -79,22 +79,48 @@ function renderSingleShoe(shoe) {
       <h1>${shoe.name}</h1>
       <p>"${shoe.title}"</p>
       <img class="custom-shoe" src="${shoe.img_url}">
-      <fieldset class="rating">
-        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-      </fieldset>
+      <form class="rating" id="${shoe.id}">
+	       <button id="star" type="submit" class="star" data-id="1">
+		       &#9733;
+		     <span class="screen-reader">1 Star</span>
+	       </button>
+
+	       <button id="star" type="submit" class="star" data-id="2">
+		        &#9733;
+		     <span class="screen-reader">2 Stars</span>
+	       </button>
+
+	        <button  id="star" type="submit" class="star" data-id="3">
+		        &#9733;
+		      <span class="screen-reader">3 Stars</span>
+	        </button>
+
+	        <button id="star" type="submit" class="star" data-id="4">
+		        &#9733;
+		      <span class="screen-reader">4 Stars</span>
+	        </button>
+
+	         <button id="star" type="submit" class="star" data-id="5">
+		        &#9733;
+		       <span class="screen-reader">5 Stars</span>
+	         </button>
+
+           <button data-id=${shoe.id} data-action="submit" id="rating-submit-button">Submit</button>
+
+      </form>
+
       <button data-id=${shoe.id} data-action="delete" id="delete-button" onclick="return confirm('Trash this kick?');">🗑</button>
   </div>
   `
 }
+
+// Highlight on hover
+customShoeContainer.addEventListener('mouseover', e => {
+  if(e.target.id === 'star') {
+    let start = parseInt(e.target.dataset.id)
+    
+  }
+});
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {

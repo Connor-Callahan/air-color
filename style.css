@@ -1,43 +1,19 @@
-/* rating widget */
 .rating {
-  border: none;
-  margin: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin-bottom: 5%;
+  padding-bottom: 25px;
+}
+  .star {
+	background: none;
+  color: indigo;
+	border: none;
+	font-size: 1.5em;
+	padding: 0 0.15em;
 }
 
-.rating > input { display: none; }
-.rating > label:before {
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.rating > .half:before {
-  content: "\f089";
+.screen-reader {
   position: absolute;
+	overflow: hidden;
+	width: 1px;
 }
-
-.rating > label {
-  color: blue;
- float: right;
-}
-
-/* highlight stars on hover */
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
 /* html2canvas to save svg to jpg images*/
 #create-shoe-container {
