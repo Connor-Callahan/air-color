@@ -1,3 +1,4 @@
+
 /* html2canvas to save svg to jpg images*/
 #create-shoe-container {
   position: absolute;
@@ -57,15 +58,15 @@
 
 #screen {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
 }
 
 /*  huebee color picker */
 
 #color-picker-container {
   left: 60px;
-  top: 60px;
+  top: 120px;
 }
 
 #color-input {
@@ -102,10 +103,9 @@
 
 /* container div for shoe */
 #container {
-  position: relative;
-  width: 80vh;
-  height: 80vh;
-  left: -60px;
+  position: absolute;
+  top: -50px;
+  left: 330px;
   margin: 7% auto;
 }
 
@@ -157,6 +157,25 @@
 
 .custom-shoe {
   width: 250px;
+}
+
+#delete-button {
+  position: absolute;
+  border-radius: 50%;
+  margin: auto;
+  bottom: 3%;
+  right: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  text-align: center;
+  font-family: nevis;
+  box-shadow: 0 2 5px darkslategrey;
+}
+
+#delete-button:hover {
+  background-color: red;
 }
 
 /* comment container */

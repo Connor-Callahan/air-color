@@ -65,7 +65,7 @@ function fetchShoes() {
       <h1>${shoe.name}</h1>
       <p>"${shoe.title}"</p>
       <img class="custom-shoe" src="${shoe.img_url}">
-      <button data-id=${shoe.id} data-action="delete">☠️</button>
+      <button data-id=${shoe.id} data-action="delete" id="delete-button">☠️</button>
       </div>
       `
     })
