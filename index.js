@@ -9,11 +9,13 @@ const createShoeForm = document.querySelector('.create-shoe-form')
 // app selector
 const shoeContainer = document.querySelector('#container')
 const screenShot = document.querySelector('#screenshot')
+const displayShoe = document.querySelector('#display-shoe')
 
 let pickerButtonBackground
 let targetPatch
 let targetPatchChange = document.querySelector('#swoosh')
 let colorChange
+let displayPatch
 
 // for hueb color-picker --min.js
 const elem = document.querySelector('#color-input');
@@ -31,9 +33,11 @@ shoeContainer.addEventListener('click', (e) => {
   if(e.target.tagName == 'path') {
     targetPatch = e.target
   }
+  displayShoe.lastChild.remove()
   innerShoePatch = targetPatch.dataset.id.slice(6, targetPatch.dataset.id.length)
   targetPatchChange = document.getElementById(innerShoePatch)
-
+  displayPatch = targetPatchChange.cloneNode(true)
+  displayShoe.appendChild(displayPatch)
 })
 
 // API requests -----

@@ -109,6 +109,15 @@
   margin: 7% auto;
 }
 
+#display-shoe{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50px;
+  left: 250px;
+  border: 2px solid lightgrey;
+}
+
 /* 3 shoe "layers" of svgs, outer=clickevent, main=color, inner=outline */
 #main-shoe {
   position: absolute;
