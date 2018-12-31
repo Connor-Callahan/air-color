@@ -4,46 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // API selectors
 const commentContainer = document.querySelector('#comment-container')
 const customShoeContainer = document.querySelector('#custom-shoe-container')
+const createShoeForm = document.querySelector('.create-shoe-form')
 
-// API requests
-
-function fetchComments() {
-  fetch('http://localhost:3000/api/v1/comments')
-  .then(r => r.json())
-  .then((data) => {
-    data.forEach((comment) => {
-      commentContainer.innerHTML += `
-      <div class="comment">
-      <h1>${comment.name}</h1>
-      <p>${comment.content}</p>
-      </div>
-      `
-    })
-  })
-}
-
-fetchComments()
-
-function fetchShoes() {
-  fetch('http://localhost:3000/api/v1/shoes/')
-  .then(r => r.json())
-  .then((data) => {
-    console.log(data)
-    data.forEach((shoe) => {
-      customShoeContainer.innerHTML += `
-      <div class="custom-shoe-card">
-      <h1>${shoe.name}</h1>
-      <p>"${shoe.title}"</p>
-      <img class="custom-shoe" src="${shoe.img_url}">
-      </div>
-      `
-    })
-  })
-}
-
-fetchShoes()
 // app selector
 const shoeContainer = document.querySelector('#container')
+const screenShot = document.querySelector('#screenshot')
 
 let pickerButtonBackground
 let targetPatch
@@ -71,28 +36,85 @@ shoeContainer.addEventListener('click', (e) => {
 
 })
 
-// altenative to hueb event change listener----
+// API requests -----
+function fetchComments() {
+  fetch('http://localhost:3000/api/v1/comments')
+  .then(r => r.json())
+  .then((data) => {
+    data.forEach((comment) => {
+      commentContainer.innerHTML += `
+      <div class="comment">
+      <h1>${comment.name}</h1>
+      <p>${comment.content}</p>
+      </div>
+      `
+    })
+  })
+}
 
-// colorID.addEventListener('click', (e) => {
-//   colorChange = colorID.style.backgroundColor
-// })
+fetchComments()
 
-// setColorButton.addEventListener('click', (e) => {
-//   console.log(colorChange)
-//   targetPatchChange.style.fill = `${colorChange}`
-// })
-//
-// loadColorButton.addEventListener('click', (e) => {
-//   setColorButton.style.color = 'white'
-//   colorChange = colorID.style.backgroundColor
-//   setColorButton.style.backgroundColor = `${colorChange}`
-// })
+function fetchShoes() {
+  fetch('http://localhost:3000/api/v1/shoes/')
+  .then(r => r.json())
+  .then((data) => {
+    console.log(data)
+    data.forEach((shoe) => {
+      customShoeContainer.innerHTML += `
+      <div id="shoe-${shoe.id}" class="custom-shoe-card">
+      <h1>${shoe.name}</h1>
+      <p>"${shoe.title}"</p>
+      <img class="custom-shoe" src="${shoe.img_url}">
+      <button data-id=${shoe.id} data-action="delete">☠️</button>
+      </div>
+      `
+    })
+  })
+}
+fetchShoes()
 
+// create custom shoe form -------
+createShoeForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  if (e.target.tagName == 'FORM') {
+    const newShoeName = document.querySelector('#shoe-name').value
+    const newShoeTitle = document.querySelector('#shoe-title').value
+    fetch(`http://localhost:3000/api/v1/shoes/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify( {
+        name: newShoeName,
+        title: newShoeTitle,
+        img_url: screenShot.src
+      })
+    })
+    .then((r) => r.json())
+    .then((data) => {
+      customShoeContainer.innerHTML = ''
+      fetchShoes()
+    })
+  }
+})
 
+// delete custom shoe -------
+customShoeContainer.addEventListener("click", e=> {
+   if (e.target.dataset.action === "delete") {
+     fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
+       method: "DELETE",
+       headers: {
+         'Accept': "application/json",
+         'Content-Type': "application/json"
+       }
+     })
+       customShoeContainer.querySelector("#shoe-" + e.target.dataset.id).remove()
+   }
+  })
 })
 
 // for using canvas ----------
-//
 function generateScreenshot() {
     html2canvas(document.getElementById('screen'), {
             scale: window.devicePixelRatio,
@@ -103,19 +125,5 @@ function generateScreenshot() {
         const src = encodeURI(data);
         document.getElementById('screenshot').src = src;
         const screenShot = document.querySelector('#screenshot').src
-        // document.getElementById('size').innerHTML = src.length + ' bytes';
     });
 }
-
-
-// saveButton.addEventListener((e) => {
-//   html2canvas(document.querySelector('#container')[0], {
-//     width: 1200,
-//     height: 1200
-//   }).then(function(canvas) {
-//     var a = document.createElement('a');
-//     a.href = canvas.toDataURL("image/png");
-//     a.download = 'myfile.png';
-//     a.click();
-//   });
-// })
