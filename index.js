@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-
 // API selectors
 const commentContainer = document.querySelector('#comment-container')
 const customShoeContainer = document.querySelector('#custom-shoe-container')
 const createShoeForm = document.querySelector('.create-shoe-form')
 
-// app selector
+// div selectors
 const shoeContainer = document.querySelector('#container')
 const screenShot = document.querySelector('#screenshot')
 const displayShoe = document.querySelector('#display-shoe')
@@ -46,36 +45,45 @@ function fetchComments() {
   .then(r => r.json())
   .then((data) => {
     data.forEach((comment) => {
+      console.log(comment)
       commentContainer.innerHTML += `
       <div class="comment">
       <h1>${comment.name}</h1>
       <p>${comment.content}</p>
+      <button data-id=${comment.id} data-action="post" id="submit-button">Submit</button>
       </div>
       `
     })
   })
 }
-
 fetchComments()
 
 function fetchShoes() {
   fetch('http://localhost:3000/api/v1/shoes/')
   .then(r => r.json())
   .then((data) => {
-    console.log(data)
-    data.forEach((shoe) => {
-      customShoeContainer.innerHTML += `
-      <div id="shoe-${shoe.id}" class="custom-shoe-card">
-      <h1>${shoe.name}</h1>
-      <p>"${shoe.title}"</p>
-      <img class="custom-shoe" src="${shoe.img_url}">
-      <button data-id=${shoe.id} data-action="delete" id="delete-button">☠️</button>
-      </div>
-      `
-    })
+      showAllShoes(data)
   })
 }
 fetchShoes()
+
+function showAllShoes(shoes) {
+  shoes.forEach((shoe) => {
+    customShoeContainer.innerHTML += renderSingleShoe(shoe)
+  })
+}
+
+function renderSingleShoe(shoe) {
+  return `
+  <div id="shoe-${shoe.id}" class="custom-shoe-card">
+      <h1>${shoe.name}</h1>
+      <p>"${shoe.title}"</p>
+      <img class="custom-shoe" src="${shoe.img_url}">
+      <button data-id=${shoe.id} data-action="post" id="comment-button">Comment</button>
+      <button data-id=${shoe.id} data-action="delete" id="delete-button" onclick="return confirm('Trash this kick?');">☠️</button>
+  </div>
+  `
+}
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
@@ -97,14 +105,13 @@ createShoeForm.addEventListener('submit', (e) => {
     })
     .then((r) => r.json())
     .then((data) => {
-      customShoeContainer.innerHTML = ''
-      fetchShoes()
+      customShoeContainer += renderSingleShoe(data)
     })
   }
 })
 
 // delete custom shoe -------
-customShoeContainer.addEventListener("click", e=> {
+customShoeContainer.addEventListener('click', e=> {
    if (e.target.dataset.action === "delete") {
      fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
        method: "DELETE",
@@ -114,6 +121,9 @@ customShoeContainer.addEventListener("click", e=> {
        }
      })
        customShoeContainer.querySelector("#shoe-" + e.target.dataset.id).remove()
+   }
+   else if (e.target.dataset.action === "post") {
+     commentContainer.style.visibility = 'visible'
    }
   })
 })
