@@ -3,22 +3,21 @@
   visibility: hidden;
   opacity: 0;
   font-size: 18px;
-  animation: kaboom 3s ease alternate;
+  animation: kaboom 3s ease alternate infinite;
 }
 
 @keyframes kaboom {
-  40% {
+  0% {
     transform: scale(1.0);
   }
   100% {
     transform: scale(3.0);
     opacity: 1;
   }
-  20% {
-    transform: scale(0.4);
-    opacity: 0;
-    visibility: hidden;
+  0% {
+    transform: scale(1.0);
   }
+  visibility: hidden
 }
 
 .like-btn {
@@ -34,6 +33,7 @@
 
 .like-btn:hover {
   background-color: blue;
+  animation: kaboom 0.7s ease alternate infinite;
 }
 
 .rating {
@@ -266,7 +266,6 @@
 }
 
 /* comment container */
-
 #comment-container {
   visibility: hidden;
   position: fixed;
@@ -280,7 +279,6 @@
   z-index: 10;
 }
 
-
 .comment {
   position: relative;
   display: inline-grid;
@@ -292,4 +290,9 @@
   padding-left: 5%;
   margin: 15px;
   font-family: 'Muli', sans-serif;
+}
+
+.is-blurred * div:not(#overlay) {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
 }

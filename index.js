@@ -116,6 +116,53 @@ function renderSingleShoe(shoe) {
   `
 }
 
+// create custom shoe form -------
+createShoeForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  if (e.target.tagName == 'FORM') {
+    const newShoeName = document.querySelector('#shoe-name').value
+    const newShoeTitle = document.querySelector('#shoe-title').value
+    fetch(`http://localhost:3000/api/v1/shoes/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify( {
+        name: newShoeName,
+        title: newShoeTitle,
+        likes: 0,
+        img_url: screenShot.src
+      })
+    })
+    .then((r) => r.json())
+    .then((data) => {
+      customShoeContainer.innerHTML += renderSingleShoe(data)
+    })
+  }
+})
+
+// delete custom shoe -------
+customShoeContainer.addEventListener('click', e=> {
+   if (e.target.dataset.action === "delete") {
+     const confirmed = confirm('You Sure?')
+     if (confirmed) {
+
+       fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
+         method: "DELETE",
+         headers: {
+           'Accept': "application/json",
+           'Content-Type': "application/json"
+         }
+       })
+       customShoeContainer.querySelector("#shoe-" + e.target.dataset.id).remove()
+     }
+     else if (e.target.dataset.action === "post") {
+       commentContainer.style.visibility = 'visible'
+     }
+    }
+  })
+  
 // highlight on hover
   customShoeContainer.addEventListener('mouseover', e => {
     e.preventDefault()
@@ -172,53 +219,6 @@ customShoeContainer.addEventListener('click', e=> {
      likeButton.innerHTML = `likes : ${addLikes}`
   }
 })
-
-// create custom shoe form -------
-createShoeForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  if (e.target.tagName == 'FORM') {
-    const newShoeName = document.querySelector('#shoe-name').value
-    const newShoeTitle = document.querySelector('#shoe-title').value
-    fetch(`http://localhost:3000/api/v1/shoes/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-        'Accept' : 'application/json'
-      },
-      body: JSON.stringify( {
-        name: newShoeName,
-        title: newShoeTitle,
-        likes: 0,
-        img_url: screenShot.src
-      })
-    })
-    .then((r) => r.json())
-    .then((data) => {
-      customShoeContainer.innerHTML += renderSingleShoe(data)
-    })
-  }
-})
-
-// delete custom shoe -------
-customShoeContainer.addEventListener('click', e=> {
-   if (e.target.dataset.action === "delete") {
-     const confirmed = confirm('You Sure?')
-     if (confirmed) {
-
-       fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
-         method: "DELETE",
-         headers: {
-           'Accept': "application/json",
-           'Content-Type': "application/json"
-         }
-       })
-       customShoeContainer.querySelector("#shoe-" + e.target.dataset.id).remove()
-     }
-     else if (e.target.dataset.action === "post") {
-       commentContainer.style.visibility = 'visible'
-     }
-     }
-  })
 
 // end of DOM Content Loaded
 })
