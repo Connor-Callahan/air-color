@@ -15,6 +15,7 @@ let targetPatch
 let targetPatchChange = document.querySelector('#swoosh')
 let colorChange
 let displayPatch
+let allShoes = []
 const shoeRating = document.querySelector('#shoe-rating')
 
 // for hueb color-picker --min.js
@@ -63,6 +64,7 @@ function fetchShoes() {
   .then(r => r.json())
   .then((data) => {
       showAllShoes(data)
+      allShoes = data
   })
 }
 fetchShoes()
@@ -78,35 +80,35 @@ function renderSingleShoe(shoe) {
   <div id="shoe-${shoe.id}" class="custom-shoe-card">
       <h1>${shoe.name}</h1>
       <p>"${shoe.title}"</p>
-      <button id="like-button">❤️ 0</button>
+      <button class="like-btn" data-ref="like" data-id=${shoe.id}>❤️</button>
+      <p>likes:${shoe.likes}</p>
       <img class="custom-shoe" src="${shoe.img_url}">
       <form class="rating" id="shoe-rating" data-id="${shoe.id}">
-	       <button id="star-${shoe.id + 1}" data-action="rate" type="submit" class="star" data-rating="1" data-ref="${shoe.id}"  data-id="${shoe.id + 1}">
+	       <button id="star-${shoe.id}-1" data-action="rate" type="submit" class="star" data-rating="1" data-ref="${shoe.id}"  data-id="1">
 		       &#9733;
 		     <span class="screen-reader"></span>
 	       </button>
 
-	       <button id="star-${shoe.id + 2}" data-action="rate" type="submit" class="star" data-rating="2" data-ref="${shoe.id}"  data-id="${shoe.id + 2}">
+	       <button id="star-${shoe.id}-2" data-action="rate" type="submit" class="star" data-rating="2" data-ref="${shoe.id}"  data-id="2}">
 		        &#9733;
 		     <span class="screen-reader"></span>
 	       </button>
 
-	        <button  id="star-${shoe.id + 3}" data-action="rate" type="submit" class="star" data-rating="3" data-ref="${shoe.id}"  data-id="${shoe.id + 3}">
+	        <button  id="star-${shoe.id}-3" data-action="rate" type="submit" class="star" data-rating="3" data-ref="${shoe.id}"  data-id="3">
 		        &#9733;
 		      <span class="screen-reader"></span>
 	        </button>
 
-	        <button id="star-${shoe.id + 4}" data-action="rate" type="submit" class="star" data-rating="4" data-ref="${shoe.id}" data-id="${shoe.id + 4}">
+	        <button id="star-${shoe.id}-4" data-action="rate" type="submit" class="star" data-rating="4" data-ref="${shoe.id}" data-id="4">
 		        &#9733;
 		      <span class="screen-reader"></span>
 	        </button>
 
-	         <button id="star-${shoe.id + 5}" data-action="rate" type="submit" class="star" data-rating="5" data-ref="${shoe.id}"  data-id="${shoe.id + 5}">
+	         <button id="star-${shoe.id}-5" data-action="rate" type="submit" class="star" data-rating="5" data-ref="${shoe.id}"  data-id="5">
 		        &#9733;
 		       <span class="screen-reader"></span>
 	         </button>
            </br>
-           <button data-id=${shoe.id} data-action="submit" id="rating-submit-button">Submit</button>
       </form>
       <button data-id=${shoe.id} data-action="delete" id="delete-button" onclick="return confirm('Trash this kick?');">🗑</button>
 
@@ -119,9 +121,9 @@ function renderSingleShoe(shoe) {
     e.preventDefault()
     if(e.target.dataset.action === 'rate') {
       start = parseInt(e.target.dataset.id) + 1
-      first = parseInt(e.target.dataset.ref) + 1
+      first = 1
       for(let i = first; i < start; i++) {
-        star = document.querySelector(`#star-${i}`)
+        star = document.querySelector(`#star-${e.target.dataset.ref}-${i}`)
         star.style.color = 'gold'
       }
     }
@@ -130,11 +132,13 @@ function renderSingleShoe(shoe) {
 
 customShoeContainer.addEventListener('mouseout', e => {
   e.preventDefault()
+  if(e.target.dataset.action === 'rate') {
     start = parseInt(e.target.dataset.id) + 1
-    first = parseInt(e.target.dataset.ref) + 1
+    first = 1
     for(let i = first; i < start; i++) {
-      star = document.querySelector(`#star-${i}`)
+      star = document.querySelector(`#star-${e.target.dataset.ref}-${i}`)
       star.style.color = 'indigo'
+    }
   }
 })
 
@@ -143,7 +147,31 @@ customShoeContainer.addEventListener('click', e => {
   if(e.target.dataset.action === 'rate') {
     console.log(e)
     rating = e.target.dataset.rating
-    consoel.log(rating)
+  }
+})
+
+customShoeContainer.addEventListener('click', e=> {
+  e.preventDefault()
+  if(e.target.dataset.ref == 'like') {
+    console.log('ok')
+    let foundShoe = allShoes.find((shoe) => {
+      return event.target.dataset.id == shoe.id
+    })
+    let addLikes = foundShoe.likes + 1
+    console.log(addLikes)
+    console.log(foundShoe.likes)
+
+    fetch(`http://localhost:3000/api/v1/shoes/${foundShoe.id}`, {
+       method: 'PATCH',
+       headers: {
+         'Content-Type' : 'application/json',
+         'Accept' : 'application/json'
+       },
+       body: JSON.stringify({
+         likes: addLikes
+       })
+     })
+
   }
 })
 
@@ -162,6 +190,7 @@ createShoeForm.addEventListener('submit', (e) => {
       body: JSON.stringify( {
         name: newShoeName,
         title: newShoeTitle,
+        likes: 0,
         img_url: screenShot.src
       })
     })
