@@ -1,3 +1,36 @@
+#rating-flash {
+  color: red;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 18px;
+  animation: kaboom 3s ease alternate;
+}
+
+@keyframes kaboom {
+  40% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(3.0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(0.4);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.like-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 17px;
+  text-align: center;
+}
 
 .rating {
   padding-bottom: 25px;
