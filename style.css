@@ -1,3 +1,4 @@
+
 .rating {
   padding-bottom: 25px;
 }
@@ -7,6 +8,10 @@
 	border: none;
 	font-size: 1.5em;
 	padding: 0 0.15em;
+}
+
+.star.is-active {
+  color: #F9DC5C;
 }
 
 .screen-reader {

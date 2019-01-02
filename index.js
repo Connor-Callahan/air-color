@@ -9,12 +9,14 @@ const createShoeForm = document.querySelector('.create-shoe-form')
 const shoeContainer = document.querySelector('#container')
 const screenShot = document.querySelector('#screenshot')
 const displayShoe = document.querySelector('#display-shoe')
+const stars = document.querySelectorAll('.star')
 
 let pickerButtonBackground
 let targetPatch
 let targetPatchChange = document.querySelector('#swoosh')
 let colorChange
 let displayPatch
+
 
 // for hueb color-picker --min.js
 const elem = document.querySelector('#color-input');
@@ -45,7 +47,6 @@ function fetchComments() {
   .then(r => r.json())
   .then((data) => {
     data.forEach((comment) => {
-      console.log(comment)
       commentContainer.innerHTML += `
       <div class="comment">
       <h1>${comment.name}</h1>
@@ -78,36 +79,36 @@ function renderSingleShoe(shoe) {
   <div id="shoe-${shoe.id}" class="custom-shoe-card">
       <h1>${shoe.name}</h1>
       <p>"${shoe.title}"</p>
+      <button id="like-button">❤️ 0</button>
       <img class="custom-shoe" src="${shoe.img_url}">
-      <form class="rating" id="${shoe.id}">
-	       <button id="star" type="submit" class="star" data-id="1">
+      <form class="rating" id="shoe-rating" data-id="${shoe.id}">
+	       <button id="star-${shoe.id + 1}" data-action="rate" type="submit" class="star" data-ref="${shoe.id}"  data-id="${shoe.id + 1}">
 		       &#9733;
-		     <span class="screen-reader">1 Star</span>
+		     <span class="screen-reader"></span>
 	       </button>
 
-	       <button id="star" type="submit" class="star" data-id="2">
+	       <button id="star-${shoe.id + 2}" data-action="rate" type="submit" class="star" data-ref="${shoe.id}"  data-id="${shoe.id + 2}">
 		        &#9733;
-		     <span class="screen-reader">2 Stars</span>
+		     <span class="screen-reader"></span>
 	       </button>
 
-	        <button  id="star" type="submit" class="star" data-id="3">
+	        <button  id="star-${shoe.id + 3}" data-action="rate" type="submit" class="star" data-ref="${shoe.id}"  data-id="${shoe.id + 3}">
 		        &#9733;
-		      <span class="screen-reader">3 Stars</span>
+		      <span class="screen-reader"></span>
 	        </button>
 
-	        <button id="star" type="submit" class="star" data-id="4">
+	        <button id="star-${shoe.id + 4}" data-action="rate" type="submit" class="star" data-ref="${shoe.id}" data-id="${shoe.id + 4}">
 		        &#9733;
-		      <span class="screen-reader">4 Stars</span>
+		      <span class="screen-reader"></span>
 	        </button>
 
-	         <button id="star" type="submit" class="star" data-id="5">
+	         <button id="star-${shoe.id + 5}" data-action="rate" type="submit" class="star" data-ref="${shoe.id}"  data-id="${shoe.id + 5}">
 		        &#9733;
-		       <span class="screen-reader">5 Stars</span>
+		       <span class="screen-reader"></span>
 	         </button>
-
-           <button data-id=${shoe.id} data-action="submit" id="rating-submit-button">Submit</button>
-
+           </br>
       </form>
+      <button data-id=${shoe.id} data-action="submit" id="rating-submit-button">Submit</button>
 
       <button data-id=${shoe.id} data-action="delete" id="delete-button" onclick="return confirm('Trash this kick?');">🗑</button>
   </div>
@@ -116,12 +117,26 @@ function renderSingleShoe(shoe) {
 
 // Highlight on hover
 customShoeContainer.addEventListener('mouseover', e => {
-  if(e.target.id === 'star') {
-    let start = parseInt(e.target.dataset.id)
-    
-  }
-});
-
+  if(e.target.dataset.action === 'rate') {
+    start = parseInt(e.target.dataset.id) + 1
+    first = parseInt(e.target.dataset.ref) + 1
+    console.log(first)
+    for(let i = first; i < start; i++) {
+      star = document.querySelector(`#star-${i}`)
+      console.log(star)
+      star.style.color = 'gold'
+    }
+   }
+})
+//
+// customShoeContainer.addEventListener('mouseover', e => {
+//   if(e.target.dataset.action === 'rate') {
+//     start = e.target.dataset.id
+//     for(let i = 0; i < start; i++)
+//       document.querySelector(`#star-${5- i}`).style.color = 'lime'
+//    }
+//
+// })
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
   e.preventDefault()
