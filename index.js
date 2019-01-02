@@ -79,9 +79,9 @@ function renderSingleShoe(shoe) {
   return `
   <div id="shoe-${shoe.id}" class="custom-shoe-card">
       <h1>${shoe.name}</h1>
-      <p>"${shoe.title}"</p>
+      <p id="shoe-title">"${shoe.title}"</p>
       <button class="like-btn" data-ref="like" data-id=${shoe.id}>❤️</button>
-      <p>likes:${shoe.likes}</p>
+      <p id="like-${shoe.id}">likes : ${shoe.likes}</p>
       <img class="custom-shoe" src="${shoe.img_url}">
       <form class="rating" id="shoe-rating" data-id="${shoe.id}">
 	       <button id="star-${shoe.id}-1" data-action="rate" type="submit" class="star" data-rating="1" data-ref="${shoe.id}"  data-id="1">
@@ -110,7 +110,7 @@ function renderSingleShoe(shoe) {
 	         </button>
            </br>
       </form>
-      <button data-id=${shoe.id} data-action="delete" id="delete-button" onclick="return confirm('Trash this kick?');">🗑</button>
+      <button data-id=${shoe.id} data-action="delete" class="delete-button" onclick="return confirm('Trash this kick?');">🗑</button>
 
   </div>
   `
@@ -145,7 +145,6 @@ customShoeContainer.addEventListener('mouseout', e => {
 customShoeContainer.addEventListener('click', e => {
   e.preventDefault()
   if(e.target.dataset.action === 'rate') {
-    console.log(e)
     rating = e.target.dataset.rating
   }
 })
@@ -153,13 +152,12 @@ customShoeContainer.addEventListener('click', e => {
 customShoeContainer.addEventListener('click', e=> {
   e.preventDefault()
   if(e.target.dataset.ref == 'like') {
-    console.log('ok')
     let foundShoe = allShoes.find((shoe) => {
       return event.target.dataset.id == shoe.id
     })
-    let addLikes = foundShoe.likes + 1
-    console.log(addLikes)
-    console.log(foundShoe.likes)
+    let addLikes = ++foundShoe.likes
+
+    let likeButton = document.querySelector(`#like-${e.target.dataset.id}`)
 
     fetch(`http://localhost:3000/api/v1/shoes/${foundShoe.id}`, {
        method: 'PATCH',
@@ -171,7 +169,7 @@ customShoeContainer.addEventListener('click', e=> {
          likes: addLikes
        })
      })
-
+     likeButton.innerHTML = `likes : ${addLikes}`
   }
 })
 
@@ -196,7 +194,7 @@ createShoeForm.addEventListener('submit', (e) => {
     })
     .then((r) => r.json())
     .then((data) => {
-      customShoeContainer += renderSingleShoe(data)
+      customShoeContainer.innerHTML += renderSingleShoe(data)
     })
   }
 })
@@ -204,19 +202,25 @@ createShoeForm.addEventListener('submit', (e) => {
 // delete custom shoe -------
 customShoeContainer.addEventListener('click', e=> {
    if (e.target.dataset.action === "delete") {
-     fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
-       method: "DELETE",
-       headers: {
-         'Accept': "application/json",
-         'Content-Type': "application/json"
-       }
-     })
+     const confirmed = confirm('You Sure?')
+     if (confirmed) {
+
+       fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
+         method: "DELETE",
+         headers: {
+           'Accept': "application/json",
+           'Content-Type': "application/json"
+         }
+       })
        customShoeContainer.querySelector("#shoe-" + e.target.dataset.id).remove()
-   }
-   else if (e.target.dataset.action === "post") {
-     commentContainer.style.visibility = 'visible'
-   }
+     }
+     else if (e.target.dataset.action === "post") {
+       commentContainer.style.visibility = 'visible'
+     }
+     }
   })
+
+// end of DOM Content Loaded
 })
 
 // for using canvas ----------
