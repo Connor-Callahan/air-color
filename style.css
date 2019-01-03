@@ -64,7 +64,6 @@
   height: 475px;
   right:  50px;
   top: 25px;
-  /* border:2px solid grey; */
 }
 
 .create-shoe-form {
@@ -103,6 +102,7 @@
   position: relative;
   border:1.5px solid lightgrey;
   margin: 0 auto;
+  padding-top: 15px;
   padding-left: 25px;
   padding-right: 15px;
   width: 300px;
@@ -229,7 +229,7 @@
 #comment-button {
   position: absolute;
   margin: auto;
-  top: 80%;
+  top: 60%;
   right: 0;
   bottom: 0;
   left: 0;
@@ -246,25 +246,6 @@
   background-color: gold;
   color: indigo;
 }
-
-.delete-button {
-  position: absolute;
-  border-radius: 50%;
-  margin: auto;
-  bottom: -25px;
-  right: 0;
-  left: 0;
-  width: 35px;
-  height: 35px;
-  font-size: 18px;
-  text-align: right;
-  border: 1px solid blue;
-}
-
-.delete-button:hover {
-  background-color: red;
-}
-
 /* comment container */
 #comment-container {
   visibility: hidden;
@@ -291,6 +272,25 @@
   margin: 15px;
   font-family: 'Muli', sans-serif;
 }
+
+.delete-button {
+  position: absolute;
+  border-radius: 50%;
+  margin: auto;
+  bottom: -25px;
+  right: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  text-align: right;
+  border: 1px solid blue;
+}
+
+.delete-button:hover {
+  background-color: red;
+}
+
 
 .is-blurred * div:not(#overlay) {
   filter: blur(2px);

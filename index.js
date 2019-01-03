@@ -110,11 +110,23 @@ function renderSingleShoe(shoe) {
 	         </button>
            </br>
       </form>
-      <button data-id=${shoe.id} data-action="delete" class="delete-button" onclick="return confirm('Trash this kick?');">🗑</button>
+      <button id="comment-button" data-id=${shoe.id} data-action="comment">Comment</button>
+      </br>
+      <button data-id=${shoe.id} data-action="delete" class="delete-button">🗑</button>
 
   </div>
   `
 }
+
+// create new comment
+customShoeContainer.addEventListener('click', (e) => {
+  if(e.target.id == 'comment-button'){
+    document.querySelector('#comment-container').style.visibility = 'visible'
+  } else {
+    document.querySelector('#comment-container').style.visibility = 'hidden'
+  }
+})
+
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
@@ -162,7 +174,7 @@ customShoeContainer.addEventListener('click', e=> {
      }
     }
   })
-  
+
 // highlight on hover
   customShoeContainer.addEventListener('mouseover', e => {
     e.preventDefault()
