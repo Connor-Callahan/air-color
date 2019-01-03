@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 // API selectors
-const commentContainer = document.querySelector('#comment-container')
 const customShoeContainer = document.querySelector('#custom-shoe-container')
 const createShoeForm = document.querySelector('.create-shoe-form')
+const commentContainer = document.querySelector('#comment-container')
+const createCommentContainer = document.querySelector('#create-comment-container')
 
 // div selectors
 const shoeContainer = document.querySelector('#container')
 const screenShot = document.querySelector('#screenshot')
 const displayShoe = document.querySelector('#display-shoe')
-const createCommentContainer = document.querySelector('#create-comment-container')
 
 let pickerButtonBackground
 let targetPatch
@@ -17,6 +17,8 @@ let targetPatchChange = document.querySelector('#swoosh')
 let colorChange
 let displayPatch
 let allShoes = []
+let allComments = []
+let foundComments = []
 let commentShoeID
 // for hueb color-picker --min.js
 const elem = document.querySelector('#color-input');
@@ -42,21 +44,6 @@ shoeContainer.addEventListener('click', (e) => {
 })
 
 // API requests -----
-function fetchComments() {
-  fetch('http://localhost:3000/api/v1/comments')
-  .then(r => r.json())
-  .then((data) => {
-    data.forEach((comment) => {
-      commentContainer.innerHTML += `
-      <div class="comment">
-      <h1>${comment.name}</h1>
-      <p>${comment.content}</p>
-      </div>
-      `
-    })
-  })
-}
-fetchComments()
 
 // fetch shoes from api -----
 function fetchShoes() {
@@ -117,10 +104,8 @@ function renderSingleShoe(shoe) {
   </div>
   `
 }
-// button id="comment-button" data-id=${shoe.id} data-action="view-comment">View</button>
-// create new comment ---------
 
-
+// make comment container visible --------
 customShoeContainer.addEventListener('click', (e) => {
   if(e.target.id == 'create-comment-button'){
     createCommentContainer.style.visibility = 'visible'
@@ -132,30 +117,78 @@ customShoeContainer.addEventListener('click', (e) => {
   }
 })
 
-createCommentContainer.addEventListener('click', (e) => {
-  e.preventDefault()
-  if(e.target.dataset.ref == 'create') {
-    const newUserName = document.querySelector('#user-name').value
-    const newUserComment = document.querySelector('#user-comment').value
-    fetch('http://localhost:3000/api/v1/comments/', {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-        'Accept' : 'application/json'
-      },
-      body: JSON.stringify( {
-        name: newUserName,
-        content: newUserComment,
-        shoe_id: commentShoeID
+// create new comment ---------
+function createComment() {
+  createCommentContainer.addEventListener('click', (e) => {
+    e.preventDefault()
+    if(e.target.dataset.ref == 'create') {
+      const newUserName = document.querySelector('#user-name').value
+      const newUserComment = document.querySelector('#user-comment').value
+      fetch('http://localhost:3000/api/v1/comments/', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Accept' : 'application/json'
+        },
+        body: JSON.stringify( {
+          name: newUserName,
+          content: newUserComment,
+          shoe_id: commentShoeID
+        })
       })
-    })
-    .then((r) => r.json())
-    .then((data) => {
-      console.log("YOOOOOO")
-      fetchComments()
-    })
+      .then((r) => r.json())
+      .then((data) => {
+        // createCommentContainer.innerHTML += `<p id="submit-msg">Submitted➕</p>`
+      })
+    }
+  })
+}
+createComment()
+
+// view all comments --------
+createCommentContainer.addEventListener('click', (e) => {
+  if(e.target.dataset.ref == 'view') {
+    createCommentContainer.style.visibility = 'hidden'
+    commentContainer.style.visibility = 'visible'
+    fetchComments()
+  } else {
+    commentContainer.style.visibility = 'hidden'
   }
 })
+
+// retrieve all comments from API
+function fetchComments() {
+  fetch(`http://localhost:3000/api/v1/comments/`)
+  .then(r => r.json())
+  .then((data) => {
+    allComments = data
+    viewComments()
+  })
+}
+
+// display comments specific to shoe_id/attach to div ------
+function viewComments() {
+  console.log(allComments)
+  foundComments = allComments.filter((comment) => {
+    return comment.shoe_id == commentShoeID
+  })
+  console.log(foundComments)
+  foundComments.forEach((comment) => {
+    commentContainer.innerHTML += renderSingleComment(comment)
+  })
+  commentContainer.innerHTML += `<button id="close-comments-button">close</button>`
+}
+
+// render a single comment
+function renderSingleComment(comment) {
+  return `
+    <div class="comment">
+    <h1>${comment.name}</h1>
+    <p>${comment.content}</p>
+    </div>
+    `
+}
+
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
@@ -178,6 +211,7 @@ createShoeForm.addEventListener('submit', (e) => {
     })
     .then((r) => r.json())
     .then((data) => {
+      allShoes.push(data)
       customShoeContainer.innerHTML += renderSingleShoe(data)
     })
   }
@@ -205,7 +239,7 @@ customShoeContainer.addEventListener('click', e=> {
   })
 
 // highlight on hover
-  customShoeContainer.addEventListener('mouseover', e => {
+customShoeContainer.addEventListener('mouseover', e => {
     e.preventDefault()
     if(e.target.dataset.action === 'rate') {
       start = parseInt(e.target.dataset.id) + 1
@@ -219,7 +253,6 @@ customShoeContainer.addEventListener('click', e=> {
 
 
 customShoeContainer.addEventListener('mouseout', e => {
-  e.preventDefault()
   if(e.target.dataset.action === 'rate') {
     start = parseInt(e.target.dataset.id) + 1
     first = 1
@@ -238,7 +271,6 @@ customShoeContainer.addEventListener('click', e => {
 })
 
 customShoeContainer.addEventListener('click', e=> {
-  e.preventDefault()
   if(e.target.dataset.ref == 'like') {
     let foundShoe = allShoes.find((shoe) => {
       return event.target.dataset.id == shoe.id

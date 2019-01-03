@@ -250,13 +250,14 @@
 /* comment container */
 #comment-container {
   visibility: hidden;
-  position: fixed;
+  position: absolute;
   margin: auto;
-  border: 3px solid lightgrey;
+  height: auto;
+  width: 50%;
   top: 25%;
   left: 25%;
-  width: 50%;
-  height: 50%;
+  border: 3px solid lightgrey;
+  background: white;
   text-align: center;
   z-index: 10;
 }
@@ -299,6 +300,7 @@
   visibility: hidden;
   position: fixed;
   margin: auto;
+  background: white;
   border: 3px solid lightgrey;
   top: 25%;
   left: 25%;
@@ -385,8 +387,9 @@
   position: relative;
   display: inline-grid;
   border: 1.5px solid lightgrey;
-  width: 175px;
-  height: 175px;
+  background: white;
+  width: 100px;
+  height: auto;
   text-align: center;
   padding-right: 5%;
   padding-left: 5%;
