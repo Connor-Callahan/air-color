@@ -11,15 +11,15 @@
     transform: scale(1.0);
   }
   100% {
-    transform: scale(3.0);
+    transform: scale(2.3);
     opacity: 1;
   }
   0% {
     transform: scale(1.0);
   }
-  visibility: hidden
 }
 
+/* like button */
 .like-btn {
   position: absolute;
   top: 15px;
@@ -36,6 +36,7 @@
   animation: kaboom 0.7s ease alternate infinite;
 }
 
+/* rating stars */
 .rating {
   padding-bottom: 25px;
 }
@@ -273,6 +274,126 @@
   font-family: 'Muli', sans-serif;
 }
 
+#create-comment-button {
+  position: absolute;
+  margin: auto;
+  top: 60%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 75px;
+  height: 30px;
+  border-radius: 5%;
+  border: 2px solid orange;
+  background-color: transparent;
+  text-align: center;
+  font-family: nevis;
+}
+
+#create-comment-button:hover {
+  background-color: gold;
+  color: indigo;
+}
+/* comment container */
+#create-comment-container {
+  visibility: hidden;
+  position: fixed;
+  margin: auto;
+  border: 3px solid lightgrey;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+  bottom: 25%;
+  width: 20%;
+  height: 300px;
+  text-align: center;
+  z-index: 10;
+}
+
+#view-comments-button {
+  position: absolute;
+  margin: auto;
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  font-size: 10px;
+  text-align: center;
+  font-family: nevis;
+  box-shadow: 0 2 5px darkslategrey;
+}
+
+#view-comments-button:hover {
+  background-color: black;
+  color: white;
+}
+
+#submit-button {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  font-size: 12px;
+  text-align: center;
+  font-family: nevis;
+  box-shadow: 0 2 5px darkslategrey;
+}
+
+#submit-button:hover {
+  background-color: black;
+  color: white;
+}
+
+#user-name {
+  position: relative;
+  width: 150px;
+  height: 20px;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid lightgrey;
+  font-size: 15px;
+  font-family: nevis;
+  color: grey;
+}
+
+#user-comment {
+  position: absolute;
+  width: 200px;
+  height: 125px;
+  margin: auto;
+  top: 30px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid lightgrey;
+  font-size: 15px;
+  font-family: nevis;
+  color: grey;
+}
+
+.comment {
+  position: relative;
+  display: inline-grid;
+  border: 1.5px solid lightgrey;
+  width: 175px;
+  height: 175px;
+  text-align: center;
+  padding-right: 5%;
+  padding-left: 5%;
+  margin: 15px;
+  font-family: 'Muli', sans-serif;
+}
+
 .delete-button {
   position: absolute;
   border-radius: 50%;
@@ -289,10 +410,4 @@
 
 .delete-button:hover {
   background-color: red;
-}
-
-
-.is-blurred * div:not(#overlay) {
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
 }

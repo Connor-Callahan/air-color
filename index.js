@@ -9,6 +9,7 @@ const createShoeForm = document.querySelector('.create-shoe-form')
 const shoeContainer = document.querySelector('#container')
 const screenShot = document.querySelector('#screenshot')
 const displayShoe = document.querySelector('#display-shoe')
+const createCommentContainer = document.querySelector('#create-comment-container')
 
 let pickerButtonBackground
 let targetPatch
@@ -16,15 +17,14 @@ let targetPatchChange = document.querySelector('#swoosh')
 let colorChange
 let displayPatch
 let allShoes = []
-const shoeRating = document.querySelector('#shoe-rating')
-
+let commentShoeID
 // for hueb color-picker --min.js
 const elem = document.querySelector('#color-input');
 const hueb = new Huebee( elem, {
   // options
   shades: 7
 });
-
+// directing the color-picker to the patch to change
 hueb.on( 'change', function( color ) {
   targetPatchChange.style.fill = color;
 });
@@ -51,7 +51,6 @@ function fetchComments() {
       <div class="comment">
       <h1>${comment.name}</h1>
       <p>${comment.content}</p>
-      <button data-id=${comment.id} data-action="post" id="submit-button">Submit</button>
       </div>
       `
     })
@@ -59,6 +58,7 @@ function fetchComments() {
 }
 fetchComments()
 
+// fetch shoes from api -----
 function fetchShoes() {
   fetch('http://localhost:3000/api/v1/shoes/')
   .then(r => r.json())
@@ -69,21 +69,23 @@ function fetchShoes() {
 }
 fetchShoes()
 
+// iterate through each element in api ---
 function showAllShoes(shoes) {
   shoes.forEach((shoe) => {
     customShoeContainer.innerHTML += renderSingleShoe(shoe)
   })
 }
 
+// render each element to the page -----
 function renderSingleShoe(shoe) {
   return `
   <div id="shoe-${shoe.id}" class="custom-shoe-card">
-      <h1>${shoe.name}</h1>
-      <p id="shoe-title">"${shoe.title}"</p>
-      <button class="like-btn" data-ref="like" data-id=${shoe.id}>❤️</button>
-      <p id="like-${shoe.id}">likes : ${shoe.likes}</p>
-      <img class="custom-shoe" src="${shoe.img_url}">
-      <form class="rating" id="shoe-rating" data-id="${shoe.id}">
+    <h1>${shoe.name}</h1>
+    <p id="shoe-title">"${shoe.title}"</p>
+    <button class="like-btn" data-ref="like" data-id=${shoe.id}>❤️</button>
+    <p id="like-${shoe.id}">likes : ${shoe.likes}</p>
+    <img class="custom-shoe" src="${shoe.img_url}">
+    <form class="rating" id="shoe-rating" data-id="${shoe.id}">
 	       <button id="star-${shoe.id}-1" data-action="rate" type="submit" class="star" data-rating="1" data-ref="${shoe.id}"  data-id="1">
 		       &#9733;
 		     <span class="screen-reader"></span>
@@ -109,24 +111,51 @@ function renderSingleShoe(shoe) {
 		       <span class="screen-reader"></span>
 	         </button>
            </br>
-      </form>
-      <button id="comment-button" data-id=${shoe.id} data-action="comment">Comment</button>
+      <button id="create-comment-button" data-id=${shoe.id} data-action="Comment">Create Comment</button>
       </br>
       <button data-id=${shoe.id} data-action="delete" class="delete-button">🗑</button>
-
   </div>
   `
 }
+// button id="comment-button" data-id=${shoe.id} data-action="view-comment">View</button>
+// create new comment ---------
 
-// create new comment
+
 customShoeContainer.addEventListener('click', (e) => {
-  if(e.target.id == 'comment-button'){
-    document.querySelector('#comment-container').style.visibility = 'visible'
+  if(e.target.id == 'create-comment-button'){
+    createCommentContainer.style.visibility = 'visible'
+    // document.querySelector('.application').style.filter = 'blur(4px)'
+    // customShoeContainer.style.filter = 'blur(4px)'
+    commentShoeID = e.target.dataset.id
   } else {
-    document.querySelector('#comment-container').style.visibility = 'hidden'
+    createCommentContainer.style.visibility = 'hidden'
   }
 })
 
+createCommentContainer.addEventListener('click', (e) => {
+  e.preventDefault()
+  if(e.target.dataset.ref == 'create') {
+    const newUserName = document.querySelector('#user-name').value
+    const newUserComment = document.querySelector('#user-comment').value
+    fetch('http://localhost:3000/api/v1/comments/', {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify( {
+        name: newUserName,
+        content: newUserComment,
+        shoe_id: commentShoeID
+      })
+    })
+    .then((r) => r.json())
+    .then((data) => {
+      console.log("YOOOOOO")
+      fetchComments()
+    })
+  }
+})
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
@@ -134,7 +163,7 @@ createShoeForm.addEventListener('submit', (e) => {
   if (e.target.tagName == 'FORM') {
     const newShoeName = document.querySelector('#shoe-name').value
     const newShoeTitle = document.querySelector('#shoe-title').value
-    fetch(`http://localhost:3000/api/v1/shoes/`, {
+    fetch('http://localhost:3000/api/v1/shoes/', {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',

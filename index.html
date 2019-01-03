@@ -18,6 +18,7 @@
   <body>
 <div class="application">
 
+
   <div id="comment-container"></div>
 
     <div id="color-picker-container">
@@ -393,9 +394,21 @@
     <div id="custom-shoe-container">
 
     </div>
-    <div id="comment-container">
+    <div id="create-comment-container">
+    <form class="create-comment-form" style=" ">
+    <button id="view-comments-button" type="submit" value="View" class="submit">View All+</button>
+      <input id="user-name" type="text" name="name" value="" placeholder="Enter your name..." class="input-text">
+      <br>
+      <textarea id="user-comment" name="message" placeholder="Enter your 👟 comment...." rows="5" cols="20"></textarea>
+      <br>
+      <button id="submit-button" type="submit" name="submit" data-ref="create" class="submit">Submit+</button>
+    </form>
     </div>
+    <div id="comment-container"></div>
+
+
   </div>
   </body>
+
 
 </html>
