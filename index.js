@@ -138,7 +138,10 @@ function createComment() {
       })
       .then((r) => r.json())
       .then((data) => {
-        // createCommentContainer.innerHTML += `<p id="submit-msg">Submitted➕</p>`
+        displayComments()
+        // fetchComments()
+        // createCommentContainer.style.visibility = 'hidden'
+        // commentContainer.style.visibility = 'visible'
       })
     }
   })
@@ -146,15 +149,18 @@ function createComment() {
 createComment()
 
 // view all comments --------
-createCommentContainer.addEventListener('click', (e) => {
-  if(e.target.dataset.ref == 'view') {
-    createCommentContainer.style.visibility = 'hidden'
-    commentContainer.style.visibility = 'visible'
-    fetchComments()
-  } else {
-    commentContainer.style.visibility = 'hidden'
-  }
-})
+function displayComments() {
+  createCommentContainer.addEventListener('click', (e) => {
+    if(e.target.tagName == 'BUTTON' ) {
+      console.log(e.target.tagName)
+      fetchComments()
+      createCommentContainer.style.visibility = 'hidden'
+      commentContainer.style.visibility = 'visible'
+    } else {
+      commentContainer.style.visibility = 'hidden'
+    }
+  })
+}
 
 // retrieve all comments from API
 function fetchComments() {
@@ -182,6 +188,7 @@ commentContainer.addEventListener('click', (e) => {
   if(e.target.dataset.ref == 'close-comment') {
     customShoeContainer.style.filter = 'blur(0px)'
     commentContainer.style.visibility = 'hidden'
+    commentContainer.innerHTML = ''
   }
 })
 
@@ -196,14 +203,14 @@ commentContainer.addEventListener('click', (e) => {
         'Content-Type': "application/json"
       }
     })
-    document.querySelector("#delete-comment-" + e.target.dataset.id).remove()
+    document.querySelector("#comment-" + e.target.dataset.id).remove()
   }
 })
 
 // render a single comment
 function renderSingleComment(comment) {
   return `
-    <div class="comment">
+    <div class="comment" id="comment-${comment.id}">
     <h1>${comment.name}</h1>
     <p>${comment.content}</p>
     <button class="delete-comment" id="delete-comment-${comment.id}" data-ref="delete-comment" data-id="${comment.id}">🗑</button>
