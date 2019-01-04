@@ -168,16 +168,37 @@ function fetchComments() {
 
 // display comments specific to shoe_id/attach to div ------
 function viewComments() {
-  console.log(allComments)
   foundComments = allComments.filter((comment) => {
     return comment.shoe_id == commentShoeID
   })
-  console.log(foundComments)
   foundComments.forEach((comment) => {
     commentContainer.innerHTML += renderSingleComment(comment)
   })
-  commentContainer.innerHTML += `<button id="close-comments-button">close</button>`
+  commentContainer.innerHTML += `<button id="close-comment" data-ref="close-comment">Close-</button>`
+  customShoeContainer.style.filter = 'blur(4px)'
 }
+
+commentContainer.addEventListener('click', (e) => {
+  if(e.target.dataset.ref == 'close-comment') {
+    customShoeContainer.style.filter = 'blur(0px)'
+    commentContainer.style.visibility = 'hidden'
+  }
+})
+
+
+// delete specific comment ------
+commentContainer.addEventListener('click', (e) => {
+  if(e.target.dataset.ref == 'delete-comment') {
+    fetch(`http://localhost:3000/api/v1/comments/${e.target.dataset.id}`, {
+      method: "DELETE",
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': "application/json"
+      }
+    })
+    document.querySelector("#delete-comment-" + e.target.dataset.id).remove()
+  }
+})
 
 // render a single comment
 function renderSingleComment(comment) {
@@ -185,6 +206,7 @@ function renderSingleComment(comment) {
     <div class="comment">
     <h1>${comment.name}</h1>
     <p>${comment.content}</p>
+    <button class="delete-comment" id="delete-comment-${comment.id}" data-ref="delete-comment" data-id="${comment.id}">🗑</button>
     </div>
     `
 }
@@ -222,7 +244,6 @@ customShoeContainer.addEventListener('click', e=> {
    if (e.target.dataset.action === "delete") {
      const confirmed = confirm('You Sure?')
      if (confirmed) {
-
        fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
          method: "DELETE",
          headers: {

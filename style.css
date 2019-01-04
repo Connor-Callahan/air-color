@@ -201,7 +201,7 @@
 
 #custom-shoe-container {
   position: absolute;
-  top: 77%;
+  top: 80%;
   width: 90%;
   margin: auto;
   right: 0;
@@ -250,14 +250,12 @@
 /* comment container */
 #comment-container {
   visibility: hidden;
-  position: absolute;
+  position: fixed;
   margin: auto;
   height: auto;
   width: 50%;
   top: 25%;
   left: 25%;
-  border: 3px solid lightgrey;
-  background: white;
   text-align: center;
   z-index: 10;
 }
@@ -266,11 +264,13 @@
   position: relative;
   display: inline-grid;
   border: 1.5px solid lightgrey;
-  width: 175px;
-  height: 175px;
+  background: white;
+  width: auto;
+  height: auto;
   text-align: center;
   padding-right: 5%;
   padding-left: 5%;
+  top: 40px;
   margin: 15px;
   font-family: 'Muli', sans-serif;
 }
@@ -383,18 +383,43 @@
   color: grey;
 }
 
-.comment {
-  position: relative;
-  display: inline-grid;
-  border: 1.5px solid lightgrey;
-  background: white;
-  width: 100px;
-  height: auto;
+#close-comment {
+  position: absolute;
+  margin: auto;
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  font-size: 12px;
   text-align: center;
-  padding-right: 5%;
-  padding-left: 5%;
-  margin: 15px;
-  font-family: 'Muli', sans-serif;
+  font-family: nevis;
+  box-shadow: 0 2 5px darkslategrey;
+}
+
+#close-comment:hover {
+  background-color: black;
+  color: white;
+}
+
+.delete-comment {
+  position: absolute;
+  border-radius: 50%;
+  margin: auto;
+  bottom: -25px;
+  right: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  text-align: right;
+  border: 1px solid blue;
+}
+
+.delete-button:hover {
+  background-color: red;
 }
 
 .delete-button {
