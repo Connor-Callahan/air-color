@@ -1,0 +1,17 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "description": "heroku",
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "air-color",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
