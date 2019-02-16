@@ -5,6 +5,7 @@ const customShoeContainer = document.querySelector('#custom-shoe-container')
 const createShoeForm = document.querySelector('.create-shoe-form')
 const commentContainer = document.querySelector('#comment-container')
 const createCommentContainer = document.querySelector('#create-comment-container')
+const createRating = document.querySelector()
 
 // div selectors
 const shoeContainer = document.querySelector('#container')
@@ -47,7 +48,7 @@ shoeContainer.addEventListener('click', (e) => {
 
 // fetch shoes from api -----
 function fetchShoes() {
-  fetch('http://localhost:3000/api/v1/shoes/')
+  fetch('http://localhost:4000/api/v1/shoes/')
   .then(r => r.json())
   .then((data) => {
       showAllShoes(data)
@@ -124,7 +125,7 @@ function createComment() {
     if(e.target.dataset.ref == 'create') {
       const newUserName = document.querySelector('#user-name').value
       const newUserComment = document.querySelector('#user-comment').value
-      fetch('http://localhost:3000/api/v1/comments/', {
+      fetch('http://localhost:4000/api/v1/comments/', {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
@@ -151,8 +152,7 @@ createComment()
 // view all comments --------
 function displayComments() {
   createCommentContainer.addEventListener('click', (e) => {
-    if(e.target.tagName == 'BUTTON' ) {
-      console.log(e.target.tagName)
+    if(e.target.dataset.ref == 'view' ) {
       fetchComments()
       createCommentContainer.style.visibility = 'hidden'
       commentContainer.style.visibility = 'visible'
@@ -164,7 +164,7 @@ function displayComments() {
 
 // retrieve all comments from API
 function fetchComments() {
-  fetch(`http://localhost:3000/api/v1/comments/`)
+  fetch(`http://localhost:4000/api/v1/comments/`)
   .then(r => r.json())
   .then((data) => {
     allComments = data
@@ -196,7 +196,7 @@ commentContainer.addEventListener('click', (e) => {
 // delete specific comment ------
 commentContainer.addEventListener('click', (e) => {
   if(e.target.dataset.ref == 'delete-comment') {
-    fetch(`http://localhost:3000/api/v1/comments/${e.target.dataset.id}`, {
+    fetch(`http://localhost:4000/api/v1/comments/${e.target.dataset.id}`, {
       method: "DELETE",
       headers: {
         'Accept': "application/json",
@@ -218,14 +218,13 @@ function renderSingleComment(comment) {
     `
 }
 
-
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
   e.preventDefault()
   if (e.target.tagName == 'FORM') {
     const newShoeName = document.querySelector('#shoe-name').value
     const newShoeTitle = document.querySelector('#shoe-title').value
-    fetch('http://localhost:3000/api/v1/shoes/', {
+    fetch('http://localhost:4000/api/v1/shoes/', {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',
@@ -251,7 +250,7 @@ customShoeContainer.addEventListener('click', e=> {
    if (e.target.dataset.action === "delete") {
      const confirmed = confirm('You Sure?')
      if (confirmed) {
-       fetch(`http://localhost:3000/api/v1/shoes/${e.target.dataset.id}`, {
+       fetch(`http://localhost:4000/api/v1/shoes/${e.target.dataset.id}`, {
          method: "DELETE",
          headers: {
            'Accept': "application/json",
@@ -305,9 +304,9 @@ customShoeContainer.addEventListener('click', e=> {
     })
     let addLikes = ++foundShoe.likes
 
+    console.log(foundShoe)
     let likeButton = document.querySelector(`#like-${e.target.dataset.id}`)
-
-    fetch(`http://localhost:3000/api/v1/shoes/${foundShoe.id}`, {
+    fetch(`http://localhost:4000/api/v1/shoes/${foundShoe.id}`, {
        method: 'PATCH',
        headers: {
          'Content-Type' : 'application/json',
@@ -316,6 +315,10 @@ customShoeContainer.addEventListener('click', e=> {
        body: JSON.stringify({
          likes: addLikes
        })
+     })
+     .then((r) => r.json())
+     .then((data) => {
+       console.log(data)
      })
      likeButton.innerHTML = `likes : ${addLikes}`
   }

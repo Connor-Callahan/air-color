@@ -1,3 +1,20 @@
+/* body {
+  transition: 1s;
+}
+
+.page_content{
+  width: 1000px;
+  height: 600px;
+  -ms-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transition: all 500ms ease-in-out !important;
+  transition: all 700ms ease-in-out !important;
+  position: absolute;
+} */
+/* for resizing */
+
+/* currently not in app */
 #rating-flash {
   color: red;
   visibility: hidden;
@@ -6,6 +23,7 @@
   animation: kaboom 3s ease alternate infinite;
 }
 
+/*  keyframe animation for .like-btn */
 @keyframes kaboom {
   0% {
     transform: scale(1.0);
@@ -40,12 +58,13 @@
 .rating {
   padding-bottom: 25px;
 }
-  .star {
-	background: none;
+
+.star {
+  background: none;
   color: indigo;
-	border: none;
-	font-size: 1.5em;
-	padding: 0 0.15em;
+  border: none;
+  font-size: 1.5em;
+  padding: 0 0.15em;
 }
 
 .star.is-active {
@@ -142,7 +161,7 @@
 }
 
 .dark-picker .huebee__container {
-  background: blue;
+  background: transparent;
 }
 
 /* save button for screenshot, included in color-picker-container div */
