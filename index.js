@@ -5,7 +5,6 @@ const customShoeContainer = document.querySelector('#custom-shoe-container')
 const createShoeForm = document.querySelector('.create-shoe-form')
 const commentContainer = document.querySelector('#comment-container')
 const createCommentContainer = document.querySelector('#create-comment-container')
-const createRating = document.querySelector()
 
 // div selectors
 const shoeContainer = document.querySelector('#container')

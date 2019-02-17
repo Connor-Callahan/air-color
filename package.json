@@ -1,0 +1,22 @@
+{
+  "name": "air-color",
+  "version": "1.0.0",
+  "description": "@mod3-project",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Connor-Callahan/air-color.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Connor-Callahan/air-color/issues"
+  },
+  "homepage": "https://github.com/Connor-Callahan/air-color#readme"
+}
