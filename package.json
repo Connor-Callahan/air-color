@@ -2,6 +2,9 @@
   "name": "air-color",
   "version": "1.0.0",
   "description": "@mod3-project",
+  "engines": {
+    "node": "10.3.0"
+  },
   "main": "index.js",
   "directories": {
     "test": "test"
