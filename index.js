@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
 // API selectors
 const customShoeContainer = document.querySelector('#custom-shoe-container')
@@ -324,7 +324,7 @@ customShoeContainer.addEventListener('click', e=> {
 })
 
 // end of DOM Content Loaded
-})
+// })
 
 // for using canvas ----------
 function generateScreenshot() {
