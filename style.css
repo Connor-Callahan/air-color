@@ -15,6 +15,7 @@
 /* for resizing */
 
 /* currently not in app */
+
 #rating-flash {
   color: red;
   visibility: hidden;
@@ -80,10 +81,17 @@
 /* html2canvas to save svg to jpg images*/
 #create-shoe-container {
   position: absolute;
-  width: 425px;
-  height: 475px;
-  right:  50px;
-  top: 25px;
+  width: 35%;
+  left:  62%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  #create-shoe-container {
+    position: absolute;
+    width: 30%;
+    left:  2%;
+    top: 40%;
+  }
 }
 
 .create-shoe-form {
@@ -92,22 +100,36 @@
   width: 200px;
   height: 200px;
   margin-top: 2%;
-  margin-left: 145px;
+  margin-left: 30%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .create-shoe-form {
+    position: relative;
+    bottom: 0px;
+    width: 150px;
+    height: 150px;
+    margin-top: -40%;
+    margin-left: 130%;
+  }
 }
 
 .create-shoe-form input {
   font-size: 15px;
+  font-weight: 900;
   font-family: 'Lato', sans-serif;
   margin: 2%;
 }
 
 .create-shoe-form button {
+  outline: none;
   border-radius: 50%;
   margin-top: 3%;
   margin-left: 50px;
   width: 60px;
   height: 60px;
   font-size: 12px;
+  font-weight: 900;
   text-align: center;
   font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
@@ -125,8 +147,7 @@
   padding-top: 15px;
   padding-left: 25px;
   padding-right: 15px;
-  width: 300px;
-  height: 300px;
+  width: 65%;
   /* position: absolute; */
   left: 50%;
   margin-left: -150px;
@@ -148,6 +169,7 @@
 }
 
 #color-input {
+  outline: none;
   position: absolute;
   top: 0px;
   left: 25px;
@@ -155,9 +177,15 @@
   width: 85px;
   height: 85px;
   font-size: 15px;
+  font-weight: 900;
   text-align: center;
   font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
+}
+
+#color-input:hover {
+  background-color: black;
+  color: white;
 }
 
 .dark-picker .huebee__container {
@@ -167,6 +195,7 @@
 /* save button for screenshot, included in color-picker-container div */
 
 #save-button {
+  outline: none;
   position: absolute;
   top: -95px;
   left: 25px;
@@ -174,9 +203,15 @@
   width: 85px;
   height: 85px;
   font-size: 15px;
+  font-weight: 900;
   text-align: center;
   font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
+}
+
+#save-button:hover {
+  background-color: black;
+  color: white;
 }
 
 /* container div for shoe */
@@ -220,12 +255,14 @@
 
 #custom-shoe-container {
   position: absolute;
+  overflow-x: scroll;
   top: 80%;
   width: 90%;
+  height: 600px;
   margin: auto;
   right: 0;
   left: 0;
-  /* border: 3px solid lightgrey; */
+  border: 3px solid lightgrey;
 }
 
 .custom-shoe-card {
@@ -263,6 +300,7 @@
 }
 
 #comment-button:hover {
+  outline: none;
   background-color: gold;
   color: indigo;
 }
@@ -295,6 +333,7 @@
 }
 
 #create-comment-button {
+  outline: none;
   position: absolute;
   margin: auto;
   top: 60%;
@@ -332,6 +371,7 @@
 }
 
 #view-comments-button {
+  outline: none;
   position: absolute;
   margin: auto;
   top: -100%;
@@ -353,6 +393,7 @@
 }
 
 #submit-button {
+  outline: none;
   position: absolute;
   margin: auto;
   top: 0;
@@ -363,6 +404,7 @@
   width: 65px;
   height: 65px;
   font-size: 12px;
+  font-weight: 900;
   text-align: center;
   font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
@@ -424,6 +466,7 @@
 }
 
 .delete-comment {
+  outline: none;
   position: absolute;
   border-radius: 50%;
   margin: auto;
@@ -442,6 +485,7 @@
 }
 
 .delete-button {
+  outline: none;
   position: absolute;
   border-radius: 50%;
   margin: auto;
