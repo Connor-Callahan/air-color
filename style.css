@@ -97,7 +97,7 @@
 
 .create-shoe-form input {
   font-size: 15px;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   margin: 2%;
 }
 
@@ -109,7 +109,7 @@
   height: 60px;
   font-size: 12px;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -156,7 +156,7 @@
   height: 85px;
   font-size: 15px;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -175,7 +175,7 @@
   height: 85px;
   font-size: 15px;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -259,7 +259,7 @@
   border: 2px solid orange;
   background-color: transparent;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
 }
 
 #comment-button:hover {
@@ -307,7 +307,7 @@
   border: 2px solid orange;
   background-color: transparent;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
 }
 
 #create-comment-button:hover {
@@ -343,7 +343,7 @@
   height: 65px;
   font-size: 10px;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -364,7 +364,7 @@
   height: 65px;
   font-size: 12px;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -383,7 +383,7 @@
   left: 0;
   border: 1px solid lightgrey;
   font-size: 15px;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   color: grey;
 }
 
@@ -398,7 +398,7 @@
   left: 0;
   border: 1px solid lightgrey;
   font-size: 15px;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   color: grey;
 }
 
@@ -414,7 +414,7 @@
   height: 65px;
   font-size: 12px;
   text-align: center;
-  font-family: nevis;
+  font-family: 'Lato', sans-serif;
   box-shadow: 0 2 5px darkslategrey;
 }
 
