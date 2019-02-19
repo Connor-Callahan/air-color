@@ -14,36 +14,7 @@
 } */
 /* for resizing */
 
-/* currently not in app */
 
-
-#responsive-container {
-  visibility: hidden;
-  text-align: center;
-  padding-top: 50%;
-}
-
-@media screen and (min-width: 200px) and (max-width: 767px) {
-  #responsive-container {
-    height: 800px;
-    width: 100%;
-    z-index: 1000;
-    position: absolute;
-    background-color: white;
-    visibility: visible;
-    font-size: 18px;
-    font-weight: 400;
-    font-family: 'Lato', sans-serif;
-  }
-}
-
-#rating-flash {
-  color: red;
-  visibility: hidden;
-  opacity: 0;
-  font-size: 18px;
-  animation: kaboom 3s ease alternate infinite;
-}
 
 /*  keyframe animation for .like-btn */
 @keyframes kaboom {
@@ -300,6 +271,19 @@
   right: 0;
   left: 0;
   border: 3px solid lightgrey;
+}
+
+@media screen and (orientation: portrait) {
+  #custom-shoe-container {
+    position: absolute;
+    overflow-x: scroll;
+    top: 25%;
+    height: 85%;
+    width: 100%;
+    margin-left: 3%;
+    position: absolute;
+    border: 3px solid lightgrey;
+  }
 }
 
 .custom-shoe-card {
