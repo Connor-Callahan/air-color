@@ -14,7 +14,28 @@
 } */
 /* for resizing */
 
+/* for vertical view in mobile devices "change to landsape" */
+#responsive-container {
+  visibility: hidden;
+  position: absolute;
+  padding-top: 50%;
+  padding-left: 17%;
+  padding-right: 17%;
+  height: 100%;
+  width: 80%;
+  text-align: center;
+  background-color: #81F4E1;
+  z-index: 100;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
 
+@media screen and (orientation: portrait) {
+  #responsive-container {
+    visibility: visible;
+  }
+}
 
 /*  keyframe animation for .like-btn */
 @keyframes kaboom {
@@ -273,16 +294,9 @@
   border: 3px solid lightgrey;
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (orientation: landscape) {
   #custom-shoe-container {
-    position: absolute;
-    overflow-x: scroll;
-    top: 25%;
-    height: 85%;
-    width: 100%;
-    margin-left: 3%;
-    position: absolute;
-    border: 3px solid lightgrey;
+    border: 0px;
   }
 }
 
