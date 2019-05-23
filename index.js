@@ -47,7 +47,7 @@ shoeContainer.addEventListener('click', (e) => {
 
 // fetch shoes from api -----
 function fetchShoes() {
-  fetch('http://localhost:4000/api/v1/shoes/')
+  fetch('https://aircolor-app-api.herokuapp.com/api/v1/shoes/')
   .then(r => r.json())
   .then((data) => {
       showAllShoes(data)
@@ -223,7 +223,7 @@ createShoeForm.addEventListener('submit', (e) => {
   if (e.target.tagName == 'FORM') {
     const newShoeName = document.querySelector('#shoe-name').value
     const newShoeTitle = document.querySelector('#shoe-title').value
-    fetch('http://localhost:4000/api/v1/shoes/', {
+    fetch('https://aircolor-app-api.herokuapp.com/api/v1/shoes/', {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',
@@ -249,7 +249,7 @@ customShoeContainer.addEventListener('click', e=> {
    if (e.target.dataset.action === "delete") {
      const confirmed = confirm('You Sure?')
      if (confirmed) {
-       fetch(`http://localhost:4000/api/v1/shoes/${e.target.dataset.id}`, {
+       fetch(`https://aircolor-app-api.herokuapp.com/api/v1/shoes/${e.target.dataset.id}`, {
          method: "DELETE",
          headers: {
            'Accept': "application/json",
