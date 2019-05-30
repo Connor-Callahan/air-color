@@ -48,7 +48,7 @@ shoeContainer.addEventListener('click', (e) => {
 
 // fetch shoes from api -----
 function fetchShoes() {
-  fetch('http://localhost:4000/api/v1/shoes/')
+  fetch('https://aircolor-app-api.herokuapp.com/api/v1/shoes/')
   .then(r => r.json())
   .then((data) => {
       showAllShoes(data)
@@ -125,7 +125,7 @@ function createComment() {
     if(e.target.dataset.ref == 'create') {
       const newUserName = document.querySelector('#user-name').value
       const newUserComment = document.querySelector('#user-comment').value
-      fetch('http://localhost:4000/api/v1/comments/', {
+      fetch('https://aircolor-app-api.herokuapp.com/api/v1/comments/', {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
@@ -164,7 +164,7 @@ function displayComments() {
 
 // retrieve all comments from API
 function fetchComments() {
-  fetch(`http://localhost:4000/api/v1/comments/`)
+  fetch(`https://aircolor-app-api.herokuapp.com/api/v1/comments/`)
   .then(r => r.json())
   .then((data) => {
     allComments = data
@@ -196,7 +196,7 @@ commentContainer.addEventListener('click', (e) => {
 // delete specific comment ------
 commentContainer.addEventListener('click', (e) => {
   if(e.target.dataset.ref == 'delete-comment') {
-    fetch(`http://localhost:4000/api/v1/comments/${e.target.dataset.id}`, {
+    fetch(`https://aircolor-app-api.herokuapp.com/api/v1/comments/${e.target.dataset.id}`, {
       method: "DELETE",
       headers: {
         'Accept': "application/json",
@@ -224,7 +224,7 @@ createShoeForm.addEventListener('submit', (e) => {
   if (e.target.tagName == 'FORM') {
     const newShoeName = document.querySelector('#shoe-name').value
     const newShoeTitle = document.querySelector('#shoe-title').value
-    fetch('http://localhost:4000/api/v1/shoes/', {
+    fetch('https://aircolor-app-api.herokuapp.com/api/v1/shoes/', {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',
@@ -250,7 +250,7 @@ customShoeContainer.addEventListener('click', e=> {
    if (e.target.dataset.action === "delete") {
      const confirmed = confirm('You Sure?')
      if (confirmed) {
-       fetch(`http://localhost:4000/api/v1/shoes/${e.target.dataset.id}`, {
+       fetch(`https://aircolor-app-api.herokuapp.com/api/v1/shoes/${e.target.dataset.id}`, {
          method: "DELETE",
          headers: {
            'Accept': "application/json",
@@ -306,7 +306,7 @@ customShoeContainer.addEventListener('click', e=> {
 
     console.log(foundShoe)
     let likeButton = document.querySelector(`#like-${e.target.dataset.id}`)
-    fetch(`http://localhost:4000/api/v1/shoes/${foundShoe.id}`, {
+    fetch(`https://aircolor-app-api.herokuapp.com/api/v1/shoes/${foundShoe.id}`, {
        method: 'PATCH',
        headers: {
          'Content-Type' : 'application/json',
