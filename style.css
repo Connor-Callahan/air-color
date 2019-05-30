@@ -15,6 +15,69 @@
 /* for resizing */
 
 /* currently not in app */
+
+#demo-button {
+  border: 2px solid black;
+  font-family: helvetica;
+  width: 20%;
+  height: 15%;
+  font-size: 24px;
+  float: right;
+  margin-right: 50%;
+  text-decoration: none;
+  text-align: center;
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #e81fdc, #dd00f3
+, #dd00f3);
+  background-size: 1800% 1800%;
+
+-webkit-animation: rainbow 10s ease infinite;
+-z-animation: rainbow 10s ease infinite;
+-o-animation: rainbow 10s ease infinite;
+ animation: rainbow 10s ease infinite;}
+
+@-webkit-keyframes rainbow {
+   0%{background-position:0% 82%}
+   50%{background-position:100% 19%}
+   100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+   0%{background-position:0% 82%}
+   50%{background-position:100% 19%}
+   100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+   0%{background-position:0% 82%}
+   50%{background-position:100% 19%}
+   100%{background-position:0% 82%}
+}
+@keyframes rainbow {
+   0%{background-position:0% 82%}
+   50%{background-position:100% 19%}
+   100%{background-position:0% 82%}
+}
+
+}
+
+@-webkit-keyframes rainbow {
+ 0%{background-position:0% 82%}
+ 50%{background-position:100% 19%}
+ 100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+ 0%{background-position:0% 82%}
+ 50%{background-position:100% 19%}
+ 100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+ 0%{background-position:0% 82%}
+ 50%{background-position:100% 19%}
+ 100%{background-position:0% 82%}
+}
+@keyframes rainbow {
+ 0%{background-position:0% 82%}
+ 50%{background-position:100% 19%}
+ 100%{background-position:0% 82%}
+}
 #rating-flash {
   color: red;
   visibility: hidden;
