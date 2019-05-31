@@ -16,6 +16,27 @@
 
 /* currently not in app */
 
+#responsive-container {
+  visibility: hidden;
+  text-align: center;
+  padding-top: 50%;
+}
+
+@media screen and (min-width: 200px) and (max-width: 767px) {
+  #responsive-container {
+    height: 800px;
+    width: 100%;
+    z-index: 1000;
+    position: absolute;
+    background-color: white;
+    visibility: visible;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+  }
+}
+
+
 #demo-button {
   border: 2px solid black;
   font-family: helvetica;
