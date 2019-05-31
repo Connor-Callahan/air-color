@@ -36,11 +36,12 @@ shoeContainer.addEventListener('click', (e) => {
   if(e.target.tagName == 'path') {
     targetPatch = e.target
   }
-  displayShoe.lastChild.remove()
   innerShoePatch = targetPatch.dataset.id.slice(6, targetPatch.dataset.id.length)
   targetPatchChange = document.getElementById(innerShoePatch)
   displayPatch = targetPatchChange.cloneNode(true)
+  displayShoe.innerHTML = ''
   displayShoe.appendChild(displayPatch)
+
 })
 
 // API requests -----
