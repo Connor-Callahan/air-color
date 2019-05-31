@@ -36,10 +36,7 @@
   }
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 6ad494d80f6c7a52283515b1ce53c617669c8c2c
 #demo-button {
   border: 2px solid black;
   font-family: helvetica;
@@ -82,8 +79,6 @@
 
 }
 
-<<<<<<< HEAD
-=======
 
 #rating-flash {
   color: red;
@@ -93,7 +88,6 @@
   animation: kaboom 3s ease alternate infinite;
 }
 
->>>>>>> 6ad494d80f6c7a52283515b1ce53c617669c8c2c
 /*  keyframe animation for .like-btn */
 @keyframes kaboom {
   0% {
