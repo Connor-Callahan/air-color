@@ -2,49 +2,30 @@
   transition: 1s;
 }
 
-.page_content{
-  width: 1000px;
-  height: 600px;
-  -ms-transform-origin: top left;
-  -webkit-transform-origin: top left;
-  transform-origin: top left;
-  -webkit-transition: all 500ms ease-in-out !important;
-  transition: all 700ms ease-in-out !important;
-  position: absolute;
-} */
 /* for resizing */
 
 /* currently not in app */
 
-#responsive-container {
-  visibility: hidden;
-  text-align: center;
-  padding-top: 50%;
+
+#body {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 300px);
+  height: 100%;
 }
 
-@media screen and (min-width: 200px) and (max-width: 767px) {
-  #responsive-container {
-    height: 800px;
-    width: 100%;
-    z-index: 1000;
-    position: absolute;
-    background-color: white;
-    visibility: visible;
-    font-size: 18px;
-    font-weight: 400;
-    font-family: 'Lato', sans-serif;
-  }
+#demo {
+  grid-area: 1 / 2 / 1 / 3;
 }
-
 
 #demo-button {
-  border: 2px solid black;
-  font-family: helvetica;
-  width: 20%;
-  height: 15%;
+  /* border: 2px solid black; */
+  color: white;
+  outline: none;
+  font-family: Helvetica;
+  width: 200px;
+  height: 50px;
   font-size: 24px;
-  float: right;
-  margin-right: 50%;
   text-decoration: none;
   text-align: center;
   background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #e81fdc, #dd00f3
@@ -102,79 +83,40 @@
   }
 }
 
-/* like button */
-.like-btn {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  font-size: 17px;
-  text-align: center;
-}
 
-.like-btn:hover {
-  background-color: blue;
-  animation: kaboom 0.7s ease alternate infinite;
-}
-
-/* rating stars */
-.rating {
-  padding-bottom: 25px;
-}
-
-.star {
-  background: none;
-  color: indigo;
-  border: none;
-  font-size: 1.5em;
-  padding: 0 0.15em;
-}
-
-.star.is-active {
-  color: #F9DC5C;
-}
-
-.screen-reader {
-  position: absolute;
-	overflow: hidden;
-	width: 1px;
+/* container for all sneaker svgs */
+#container {
+  grid-area: 1 / 2 / 1 / 6;
+  margin: auto;
 }
 
 /* html2canvas to save svg to jpg images*/
 #create-shoe-container {
-  position: absolute;
-  width: 425px;
-  height: 475px;
-  right:  50px;
-  top: 25px;
+  grid-area: 1 / 6 / 1 / 7;
+  text-align: center;
+  width: 300px;
+  margin: auto;
 }
 
 .create-shoe-form {
-  position: relative;
-  bottom: 0px;
-  width: 200px;
-  height: 200px;
-  margin-top: 2%;
-  margin-left: 145px;
+  text-align: center;
 }
 
 .create-shoe-form input {
   font-size: 15px;
-  font-family: nevis;
+  font-family: Helvetica;
   margin: 2%;
 }
 
 .create-shoe-form button {
+  outline: none;
   border-radius: 50%;
   margin-top: 3%;
-  margin-left: 50px;
   width: 60px;
   height: 60px;
   font-size: 12px;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -184,18 +126,9 @@
 }
 
 #screenshot {
-  position: relative;
   border:1.5px solid lightgrey;
-  margin: 0 auto;
-  padding-top: 15px;
-  padding-left: 25px;
-  padding-right: 15px;
-  width: 300px;
-  height: 300px;
-  /* position: absolute; */
-  left: 50%;
-  margin-left: -150px;
-  margin-top: 10%;
+  width: 100%;
+  height: 100%;
   z-index: 4;
 }
 
@@ -208,20 +141,22 @@
 /*  huebee color picker */
 
 #color-picker-container {
-  left: 60px;
-  top: 120px;
+  margin: auto;
+  display: grid;
+  grid-area: 1 / 1 / 1 / 1;
+
 }
 
 #color-input {
-  position: absolute;
-  top: 0px;
-  left: 25px;
+  outline: none;
+  text-align: center;
+  margin-bottom: 25px;
   border-radius: 50%;
   width: 85px;
   height: 85px;
   font-size: 15px;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -232,32 +167,20 @@
 /* save button for screenshot, included in color-picker-container div */
 
 #save-button {
-  position: absolute;
-  top: -95px;
-  left: 25px;
+  outline: none;
   border-radius: 50%;
   width: 85px;
   height: 85px;
   font-size: 15px;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
   box-shadow: 0 2 5px darkslategrey;
 }
 
-/* container div for shoe */
-#container {
-  position: absolute;
-  top: -50px;
-  left: 330px;
-  margin: 7% auto;
-}
-
 #display-shoe{
-  position: absolute;
+  grid-area: 2 / 1 / 2 / 1;
   width: 200px;
   height: 200px;
-  top: 50px;
-  left: 250px;
   border: 2px solid lightgrey;
 }
 
@@ -284,17 +207,16 @@
 }
 
 #custom-shoe-container {
-  position: absolute;
-  top: 80%;
-  width: 90%;
+  grid-area: 3 / 1 / 5 / 7;
+  height: 800px;
+  text-align: center;
+  overflow-y: scroll;
   margin: auto;
   right: 0;
   left: 0;
-  /* border: 3px solid lightgrey; */
 }
 
 .custom-shoe-card {
-  position: relative;
   display: inline-grid;
   width: auto;
   height: auto;
@@ -304,7 +226,6 @@
   padding-left: 4%;
   margin: 15px;
   font-family: 'Source Sans Pro', sans-serif;
-
 }
 
 .custom-shoe {
@@ -312,19 +233,15 @@
 }
 
 #comment-button {
-  position: absolute;
+  outline: none;
   margin: auto;
-  top: 60%;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 75px;
   height: 30px;
   border-radius: 5%;
   border: 2px solid orange;
   background-color: transparent;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
 }
 
 #comment-button:hover {
@@ -360,19 +277,13 @@
 }
 
 #create-comment-button {
-  position: absolute;
-  margin: auto;
-  top: 60%;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 75px;
   height: 30px;
   border-radius: 5%;
   border: 2px solid orange;
   background-color: transparent;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
 }
 
 #create-comment-button:hover {
@@ -382,33 +293,19 @@
 /* comment container */
 #create-comment-container {
   visibility: hidden;
-  position: fixed;
-  margin: auto;
-  background: white;
-  border: 3px solid lightgrey;
-  top: 25%;
-  left: 25%;
-  right: 25%;
-  bottom: 25%;
-  width: 20%;
-  height: 300px;
+
   text-align: center;
   z-index: 10;
 }
 
 #view-comments-button {
-  position: absolute;
   margin: auto;
-  top: -100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
   border-radius: 50%;
   width: 65px;
   height: 65px;
   font-size: 10px;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -418,18 +315,13 @@
 }
 
 #submit-button {
-  position: absolute;
   margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: -100%;
   border-radius: 50%;
   width: 65px;
   height: 65px;
   font-size: 12px;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -439,7 +331,6 @@
 }
 
 #user-name {
-  position: relative;
   width: 150px;
   height: 20px;
   top: 50px;
@@ -448,12 +339,11 @@
   left: 0;
   border: 1px solid lightgrey;
   font-size: 15px;
-  font-family: nevis;
+  font-family: Helvetica;
   color: grey;
 }
 
 #user-comment {
-  position: absolute;
   width: 200px;
   height: 125px;
   margin: auto;
@@ -463,12 +353,11 @@
   left: 0;
   border: 1px solid lightgrey;
   font-size: 15px;
-  font-family: nevis;
+  font-family: Helvetica;
   color: grey;
 }
 
 #close-comment {
-  position: absolute;
   margin: auto;
   top: -100%;
   left: 0;
@@ -479,7 +368,7 @@
   height: 65px;
   font-size: 12px;
   text-align: center;
-  font-family: nevis;
+  font-family: Helvetica;
   box-shadow: 0 2 5px darkslategrey;
 }
 
@@ -489,7 +378,6 @@
 }
 
 .delete-comment {
-  position: absolute;
   border-radius: 50%;
   margin: auto;
   bottom: -25px;
@@ -507,7 +395,6 @@
 }
 
 .delete-button {
-  position: absolute;
   border-radius: 50%;
   margin: auto;
   bottom: -25px;
@@ -522,4 +409,42 @@
 
 .delete-button:hover {
   background-color: red;
+}
+
+/* like button */
+.like-btn {
+  outline: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 100%;
+  text-align: center;
+}
+
+.like-btn:hover {
+  background-color: blue;
+  animation: kaboom 0.7s ease alternate infinite;
+}
+
+/* rating stars */
+.rating {
+  padding-bottom: 25px;
+}
+
+.star {
+  background: none;
+  color: indigo;
+  border: none;
+  font-size: 1.5em;
+  padding: 0 0.15em;
+}
+
+.star.is-active {
+  color: #F9DC5C;
+}
+
+.screen-reader {
+  position: absolute;
+	overflow: hidden;
+	width: 1px;
 }
