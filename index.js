@@ -10,6 +10,8 @@ const createCommentContainer = document.querySelector('#create-comment-container
 const shoeContainer = document.querySelector('#container')
 const screenShot = document.querySelector('#screenshot')
 const displayShoe = document.querySelector('#display-shoe')
+const introContainer = document.querySelector('#intro')
+const introButton = document.querySelector('#intro-btn')
 
 let pickerButtonBackground
 let targetPatch
@@ -20,6 +22,15 @@ let allShoes = []
 let allComments = []
 let foundComments = []
 let commentShoeID
+
+
+// to close introduction plyr__video
+
+introButton.addEventListener('click', (e) => {
+  introContainer.style.visibility = 'hidden'
+  introButton.style.visibility = 'hidden'
+})
+
 // for hueb color-picker --min.js
 const elem = document.querySelector('#color-input');
 const hueb = new Huebee( elem, {
@@ -220,6 +231,8 @@ function renderSingleComment(comment) {
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
+  introButton.innerHTML = 'Just Did It.'
+
   e.preventDefault()
   if (e.target.tagName == 'FORM') {
     const newShoeName = document.querySelector('#shoe-name').value
