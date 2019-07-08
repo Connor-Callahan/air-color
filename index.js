@@ -12,6 +12,7 @@ const screenShot = document.querySelector('#screenshot')
 const displayShoe = document.querySelector('#display-shoe')
 const introContainer = document.querySelector('#intro')
 const introButton = document.querySelector('#intro-btn')
+const helpButton = document.querySelector('#help-btn')
 
 let pickerButtonBackground
 let targetPatch
@@ -29,6 +30,13 @@ let commentShoeID
 introButton.addEventListener('click', (e) => {
   introContainer.style.visibility = 'hidden'
   introButton.style.visibility = 'hidden'
+  helpButton.style.visibility = 'visible'
+})
+
+helpButton.addEventListener('click', (e) => {
+  introContainer.style.visibility = 'visible'
+  introButton.style.visibility = 'visible'
+  helpButton.style.visibility = 'hidden'
 })
 
 // for hueb color-picker --min.js

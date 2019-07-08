@@ -21,7 +21,6 @@ h1 {
   grid-area: 1 / 2 / 1 / 3;
 }
 
-
 #rating-flash {
   color: red;
   visibility: hidden;
@@ -89,12 +88,24 @@ h1 {
   margin: auto;
 }
 
+#help-btn {
+  grid-area: 1 / 4 / 1 / 5;
+  visibility: hidden;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  outline: none;
+}
+
 /* html2canvas to save svg to jpg images*/
 #create-shoe-container {
   grid-area: 1 / 6 / 1 / 7;
   text-align: center;
-  border: 1px solid black;
+  border: 2px solid black;
   width: 300px;
+  padding-bottom: 50px;
   margin: auto;
 }
 
@@ -105,19 +116,19 @@ h1 {
 .create-shoe-form input {
   font-size: 15px;
   font-family: Helvetica;
+  border: 2px solid black;
   margin: 2%;
 }
 
 .create-shoe-form button {
   outline: none;
+  border: 2px solid black;
   border-radius: 50%;
   margin-top: 3%;
   width: 60px;
   height: 60px;
   font-size: 12px;
   text-align: center;
-  font-family: Helvetica;
-  box-shadow: 0 2 5px darkslategrey;
 }
 
 .create-shoe-form button:hover {
@@ -143,7 +154,6 @@ h1 {
   margin: auto;
   display: grid;
   grid-area: 1 / 1 / 1 / 1;
-
 }
 
 #color-input {
@@ -182,7 +192,7 @@ h1 {
   grid-area: 1 / 2 / 2 / 2;
   width: 200px;
   height: 200px;
-  border: 2px solid lightgrey;
+  border: 2px solid black;
 }
 
 /* 3 shoe "layers" of svgs, outer=clickevent, main=color, inner=outline */
