@@ -60,16 +60,18 @@ h1 {
   background: transparent;
   visibility: visible;
   grid-area: 4 / 3 / 4 / 3;
-  height: 50px;
+  height: 120px;
+  padding: 20px;
   width: auto;
   border: 2px solid black;
   font-size: 24px;
 }
 
 #intro-btn:hover {
-  background: black;
+  background: red;
   color: white;
 }
+
 
 #player-container {
   grid-area: 1 / 2 / 4 / 5;
@@ -149,6 +151,7 @@ h1 {
   text-align: center;
   margin-bottom: 25px;
   border-radius: 50%;
+  border: 2px solid black;
   width: 85px;
   height: 85px;
   font-size: 15px;
@@ -166,6 +169,7 @@ h1 {
 #save-button {
   outline: none;
   border-radius: 50%;
+  border: 2px solid black;
   width: 85px;
   height: 85px;
   font-size: 15px;
@@ -206,6 +210,7 @@ h1 {
 #custom-shoe-container {
   grid-area: 3 / 1 / 5 / 7;
   height: 800px;
+  border: 2px solid black;
   text-align: center;
   overflow-y: scroll;
   margin: auto;
@@ -219,9 +224,9 @@ h1 {
 
 .custom-shoe-card {
   display: inline-grid;
-  width: auto;
+  width: 20%;
   height: auto;
-  border: 3px solid lightgrey;
+  border: 3px solid black;
   text-align: center;
   padding-right: 4%;
   padding-left: 4%;
@@ -396,6 +401,7 @@ h1 {
 }
 
 .delete-button {
+  background-color: transparent;
   border: none;
   margin: auto;
   right: 0;
