@@ -356,6 +356,7 @@ function generateScreenshot() {
             profile: true,
             useCORS: false}).then(function(canvas) {
         const data = canvas.toDataURL('image/jpeg', 0.9);
+        console.log(data)
         const src = encodeURI(data);
         document.getElementById('screenshot').src = src;
         const screenShot = document.querySelector('#screenshot').src
