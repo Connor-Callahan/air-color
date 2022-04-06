@@ -12,6 +12,28 @@
 
     <script src="index.js"></script>
     <script src="https://cdn.plyr.io/2.0.15/plyr.js"></script>
+    <script>
+      (function (h, o, u, n, d) {
+        h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
+        d = o.createElement(u); d.async = 1; d.src = n
+        n = o.getElementsByTagName(u)[0]; n.parentNode.insertBefore(d, n)
+      })(window, document, 'script', 'https://www.datadoghq-browser-agent.com/datadog-rum-v4.js', 'DD_RUM')
+      DD_RUM.onReady(function () {
+        DD_RUM.init({
+          clientToken: 'pub68d9ad49b075d3c4f17f9ab5c96c615b',
+          applicationId: '659baf34-5c5b-4f5f-9b49-f3ae4adf4fcd',
+          site: 'datadoghq.com',
+          service: 'air-color',
+          // Specify a version number to identify the deployed version of your application in Datadog 
+          // version: '1.0.0',
+          sampleRate: 100,
+          trackInteractions: true,
+          defaultPrivacyLevel: 'mask-user-input'
+        });
+
+        DD_RUM.startSessionReplayRecording();
+      })
+    </script>
 
 
     <!-- huebee color picker -->
