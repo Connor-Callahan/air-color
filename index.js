@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-console.log("newnetlifydeploy")
-
 // API selectors
 const customShoeContainer = document.querySelector('#custom-shoe-container')
 const createShoeForm = document.querySelector('.create-shoe-form')
