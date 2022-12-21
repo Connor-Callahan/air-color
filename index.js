@@ -245,7 +245,7 @@ createShoeForm.addEventListener('submit', (e) => {
   if (e.target.tagName == 'FORM') {
     const newShoeName = document.querySelector('#shoe-name').value
     const newShoeTitle = document.querySelector('#shoe-title').value
-    fetch('https://aircolor-app-api.herokuapp.com/api/v1/shoes/', {
+    fetch('https://sneaker-db.herokuapp.com/api/v1/shoes/', {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',
