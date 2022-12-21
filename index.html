@@ -30,7 +30,7 @@
           sampleRate: 100,
           trackInteractions: true,
           defaultPrivacyLevel: 'mask-user-input',
-          allowedTracingOrigins: ["https://sneaker-db.herokuapp.com/", /https:\/\/.*\.sneaker-db.herokuapp\.com/, (origin) => origin === "https://sneaker-db.herokuapp.com"]
+          allowedTracingOrigins: ["https://sneaker-db.herokuapp.com/api/v1/shoes", /https:\/\/.*\.sneaker-db.herokuapp\.com/, (origin) => origin === "https://sneaker-db.herokuapp.com/api/v1/shoes"]
         });
 
         DD_RUM.startSessionReplayRecording();
