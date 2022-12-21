@@ -40,7 +40,7 @@
         applicationId: '659baf34-5c5b-4f5f-9b49-f3ae4adf4fcd',
         site: 'datadoghq.com',
         service: 'air-color',
-        allowedTracingOrigins: ["https://sneaker-db.herokuapp.com/api/v1/shoes", /https:\/\/.*\.sneaker-db.herokuapp\.com/, (origin) => origin === "https://sneaker-db.herokuapp.com/api/v1/shoes"],
+        allowedTracingOrigins: ["https://sneaker-db.herokuapp.com/api/", /https:\/\/.*\.sneaker-db.herokuapp\.com/, (origin) => origin === "https://sneaker-db.herokuapp.com/api/"],
         // Specify a version number to identify the deployed version of your application in Datadog 
         // version: '1.0.0',
         sampleRate: 100,
