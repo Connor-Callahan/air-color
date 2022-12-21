@@ -1,0 +1,1 @@
+{"version":3,"file":"browserDetection.js","sourceRoot":"","sources":["../../src/tools/browserDetection.ts"],"names":[],"mappings":";;;AAAA,SAAgB,IAAI;IAClB,OAAO,OAAO,CAAE,QAAgB,CAAC,YAAY,CAAC,CAAA;AAChD,CAAC;AAFD,oBAEC;AAED,SAAgB,UAAU;IACxB,OAAO,CAAC,CAAE,MAAc,CAAC,MAAM,IAAI,gBAAgB,CAAC,IAAI,CAAC,MAAM,CAAC,SAAS,CAAC,SAAS,CAAC,CAAA;AACtF,CAAC;AAFD,gCAEC"}

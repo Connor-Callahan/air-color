@@ -1,0 +1,1 @@
+{"version":3,"file":"internalContext.js","sourceRoot":"","sources":["../../src/domain/internalContext.ts"],"names":[],"mappings":"AAOA,MAAM,UAAU,oBAAoB,CAAC,cAAkC;IACrE,OAAO;QACL,GAAG,EAAE,UAAC,SAAkB;YACtB,IAAM,cAAc,GAAG,cAAc,CAAC,kBAAkB,CAAC,SAAyB,CAAC,CAAA;YACnF,IAAI,cAAc,EAAE;gBAClB,OAAO;oBACL,UAAU,EAAE,cAAc,CAAC,EAAE;iBAC9B,CAAA;aACF;QACH,CAAC;KACF,CAAA;AACH,CAAC"}

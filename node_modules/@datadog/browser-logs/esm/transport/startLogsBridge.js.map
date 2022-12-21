@@ -1,0 +1,1 @@
+{"version":3,"file":"startLogsBridge.js","sourceRoot":"","sources":["../../src/transport/startLogsBridge.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,cAAc,EAAE,MAAM,uBAAuB,CAAA;AAKtD,MAAM,UAAU,eAAe,CAAC,SAAoB;IAClD,IAAM,MAAM,GAAG,cAAc,EAAqB,CAAA;IAElD,SAAS,CAAC,SAAS,wBAAmC,UAAC,eAAoC;QACzF,MAAM,CAAC,IAAI,CAAC,KAAK,EAAE,eAAe,CAAC,CAAA;IACrC,CAAC,CAAC,CAAA;AACJ,CAAC"}

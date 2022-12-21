@@ -1,0 +1,1 @@
+{"version":3,"file":"sendToExtension.js","sourceRoot":"","sources":["../../src/tools/sendToExtension.ts"],"names":[],"mappings":"AAMA,MAAM,UAAU,eAAe,CAAC,IAA0B,EAAE,OAAgB;IAC1E,IAAM,QAAQ,GAAI,MAAwB,CAAC,+BAA+B,CAAA;IAC1E,IAAI,QAAQ,EAAE;QACZ,QAAQ,CAAC,EAAE,IAAI,MAAA,EAAE,OAAO,SAAA,EAAE,CAAC,CAAA;KAC5B;AACH,CAAC"}
