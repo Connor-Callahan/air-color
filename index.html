@@ -14,6 +14,16 @@
 
     <script src="index.js"></script>
     <script src="https://cdn.plyr.io/2.0.15/plyr.js"></script>
+    <script type="text/javascript" src="https://www.datadoghq-browser-agent.com/datadog-logs-v4.js"></script>
+    <script>
+      window.DD_LOGS &&
+        DD_LOGS.init({
+          clientToken: 'pub68d9ad49b075d3c4f17f9ab5c96c615b',
+          site: 'datadoghq.com',
+          forwardErrorsToLogs: true,
+          sampleRate: 100,
+        })
+    </script>
     <script>
       (function (h, o, u, n, d) {
         h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
@@ -47,19 +57,6 @@
   </head>
 
   <body id="body">
-    <div id="intro">
-      <div class="plyr__video-embed" id="player-container">
-        <iframe
-            id="player"
-            src="https://player.vimeo.com/video/319501272"
-            allowfullscreen
-            allowtransparency
-            allow="autoplay"
-        ></iframe>
-      </div>
-      <button id="intro-btn">Just do it.</button>
-      <button id="help-btn">?</button>
-    </div>
     <div id="comment-container"></div>
     <div id="color-picker-container">
         <button id="color-input" data-huebee='{ "className": "dark-picker" }'>Select color</button>
