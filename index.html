@@ -15,6 +15,15 @@
     <script src="index.js"></script>
     <script src="https://cdn.plyr.io/2.0.15/plyr.js"></script>
     <script>
+      window.DD_LOGS &&
+        DD_LOGS.init({
+          clientToken: 'pub68d9ad49b075d3c4f17f9ab5c96c615b',
+          site: 'datadoghq.com',
+          forwardErrorsToLogs: true,
+          sampleRate: 100,
+        })
+    </script>
+    <script>
       (function (h, o, u, n, d) {
         h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
         d = o.createElement(u); d.async = 1; d.src = n
