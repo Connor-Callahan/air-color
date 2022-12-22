@@ -25,19 +25,19 @@ let foundComments = []
 let commentShoeID
 
 
-// to close introduction plyr__video
+// // to close introduction plyr__video
 
-introButton.addEventListener('click', (e) => {
-  introContainer.style.visibility = 'hidden'
-  introButton.style.visibility = 'hidden'
-  helpButton.style.visibility = 'visible'
-})
+// introButton.addEventListener('click', (e) => {
+//   introContainer.style.visibility = 'hidden'
+//   introButton.style.visibility = 'hidden'
+//   helpButton.style.visibility = 'visible'
+// })
 
-helpButton.addEventListener('click', (e) => {
-  introContainer.style.visibility = 'visible'
-  introButton.style.visibility = 'visible'
-  helpButton.style.visibility = 'hidden'
-})
+// helpButton.addEventListener('click', (e) => {
+//   introContainer.style.visibility = 'visible'
+//   introButton.style.visibility = 'visible'
+//   helpButton.style.visibility = 'hidden'
+// })
 
 // for hueb color-picker --min.js
 const elem = document.querySelector('#color-input');
@@ -57,6 +57,7 @@ shoeContainer.addEventListener('click', (e) => {
   }
   displayShoe.lastChild.remove()
   innerShoePatch = targetPatch.dataset.id.slice(6, targetPatch.dataset.id.length)
+  console.log(innerShoePatch)
   targetPatchChange = document.getElementById(innerShoePatch)
   displayPatch = targetPatchChange.cloneNode(true)
   displayShoe.appendChild(displayPatch)

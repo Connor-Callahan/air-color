@@ -40,7 +40,7 @@
         applicationId: '659baf34-5c5b-4f5f-9b49-f3ae4adf4fcd',
         site: 'datadoghq.com',
         service: 'air-color',
-        allowedTracingOrigins: ["https://sneaker-db.herokuapp.com//api/v1/shoes/", /https:\/\/.*\.sneaker-db.herokuapp\.com/, (origin) => origin === "https://sneaker-db.herokuapp.com//api/v1/shoes/"],
+        allowedTracingOrigins: ["https://sneaker-db.herokuapp.com/api/v1/shoes/", /https:\/\/.*\.sneaker-db.herokuapp\.com/, (origin) => origin === "https://sneaker-db.herokuapp.com/api/v1/shoes/"],
         // Specify a version number to identify the deployed version of your application in Datadog 
         // version: '1.0.0',
         sampleRate: 100,
@@ -61,14 +61,14 @@
 </head>
 
 <body id="body">
-  <div id="intro">
+  <!-- <div id="intro">
     <div class="plyr__video-embed" id="player-container">
       <iframe id="player" src="https://player.vimeo.com/video/319501272" allowfullscreen allowtransparency
         allow="autoplay"></iframe>
     </div>
     <button id="intro-btn">Just do it.</button>
     <button id="help-btn">?</button>
-  </div>
+  </div> -->
   <div id="comment-container"></div>
   <div id="color-picker-container">
     <button id="color-input" data-huebee='{ "className": "dark-picker" }'>Select color</button>
