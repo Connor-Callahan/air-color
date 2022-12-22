@@ -25,7 +25,7 @@ let foundComments = []
 let commentShoeID
 
 
-to close introduction plyr__video
+// to close introduction plyr__video
 
 introButton.addEventListener('click', (e) => {
   introContainer.style.visibility = 'hidden'
