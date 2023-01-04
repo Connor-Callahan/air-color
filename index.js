@@ -25,7 +25,7 @@ let foundComments = []
 let commentShoeID
 
 
-// to close introduction plyr__video
+// to close introduction plyr__video -front end bug demo
 
 // introButton.addEventListener('click', (e) => {
 //   introContainer.style.visibility = 'hidden'
@@ -80,7 +80,6 @@ fetchShoes()
 function showAllShoes(shoes) {
   shoes.forEach((shoe) => {
     customShoeContainer.innerHTML += renderSingleShoe(shoe)
-    console.log('hello')
   })
 }
 
@@ -240,7 +239,8 @@ function renderSingleComment(comment) {
 
 // create custom shoe form -------
 createShoeForm.addEventListener('submit', (e) => {
-  introButton.innerHTML = 'Just Did It.'
+// frontend bug demo
+  // introButton.innerHTML = 'Just Did It.'  
 
   e.preventDefault()
   if (e.target.tagName == 'FORM') {
@@ -263,6 +263,7 @@ createShoeForm.addEventListener('submit', (e) => {
     .then((data) => {
       allShoes.push(data)
       customShoeContainer.innerHTML += renderSingleShoe(data)
+      console.log(data)
     })
   }
 })
